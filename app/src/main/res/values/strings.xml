@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Repo-ihm</string>
-    <string name="placeName">placename</string>
-    <string name="title_activity_maps">MapsActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="accueil">ACCUEIL</string>
+    <string name="contact">CONTACT</string>
+    <string name="polytech">POLYTECH</string>
+    <string name="a_propos">A PROPOS</string>
 </resources>

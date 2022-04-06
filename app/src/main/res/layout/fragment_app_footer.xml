@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppFooterActivity"
+    android:gravity="bottom"
+    android:id="@+id/footer"
+
+    >
+
+    <Button
+        android:id="@+id/BtnAccueil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/accueil"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/black"
+        />
+
+    <Button
+        android:id="@+id/btnContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/contact"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/black"
+       />
+
+    <Button
+        android:id="@+id/btnPolytech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/polytech"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/black"
+        />
+
+    <Button
+        android:id="@+id/btnApropo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/a_propos"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/black"
+        />
+
+
+</LinearLayout>
