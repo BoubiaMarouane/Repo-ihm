@@ -1,10 +1,11 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
     compileSdk 31
-
+    namespace 'edu.polytech.repo_ihm'
     defaultConfig {
         applicationId "edu.polytech.repo_ihm"
         minSdk 27
@@ -24,6 +25,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 

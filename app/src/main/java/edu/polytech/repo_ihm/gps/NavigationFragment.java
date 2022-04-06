@@ -30,7 +30,7 @@ public class NavigationFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(getActivity(), new String[] (Manifest.permission.ACCESS_COARSE_LOCATION), REQUEST_CODE);
+                    ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE);
                 }
             }
         });
