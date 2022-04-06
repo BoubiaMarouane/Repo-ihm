@@ -21,14 +21,26 @@
                 android:id="@+id/linearFrame15"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" android:orientation="vertical">
-                <TextView android:ellipsize="end"
+
+                <TextView
                     android:id="@+id/txtMarketPlace"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
+                    android:layout_marginLeft="120dp"
+                    android:ellipsize="end"
                     android:singleLine="true"
                     android:text="Market Place"
                     android:textAllCaps="true"
-                    tools:text="@string/lbl_market_place2"/>
+                    android:textSize="20dp"
+                    tools:text="@string/lbl_market_place2" />
+
+                <Button
+                    android:id="@+id/returnToHomePageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="37dp"
+                    android:onClick="returnHomePage"
+                    android:text="Retour" />
+
                 <LinearLayout android:gravity="start"
                     android:id="@+id/linearBack"
                     android:layout_height="wrap_content"
