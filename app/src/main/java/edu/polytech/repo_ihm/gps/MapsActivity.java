@@ -18,7 +18,7 @@ import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.databinding.ActivityMainBinding;
 
 
-class MapActivity extends FragmentActivity implements OnMapReadyCallback {
+class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
