@@ -27,4 +27,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, MarketPlace.class);
         startActivity(intent);
     }
+
+    public void goToAideDosage(View view) {
+        Intent intent = new Intent(MainActivity.this, AideDosage.class);
+        startActivity(intent);
+    }
 }
