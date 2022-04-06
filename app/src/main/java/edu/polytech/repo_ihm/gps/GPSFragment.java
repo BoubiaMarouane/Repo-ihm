@@ -33,6 +33,7 @@ import edu.polytech.repo_ihm.R;
 public class GPSFragment extends Fragment {
     private IGPSActivity igpsActivity;
     private TextView placeNameTextView;
+    private Location currentLocation;
     public GPSFragment(){}
     public GPSFragment(IGPSActivity activity){igpsActivity=activity;}
 
@@ -45,9 +46,7 @@ public class GPSFragment extends Fragment {
         final ImageView imageGPSActivated = rootView.findViewById(R.id.imageGPSActivated);
         boolean permissionGranted = ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
 
-        if(permissionGranted)
-
-        {
+        if(permissionGranted) {
             imageGPSGranted.setImageResource(R.drawable.gpson);
             LocationListener listener = new LocationListener() {
                 @Override
@@ -72,8 +71,8 @@ public class GPSFragment extends Fragment {
                 }
             };
         LocationManager locationManager = (LocationManager) (getActivity().getSystemService(Context.LOCATION_SERVICE));
-        LocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,1,listener);
-        imageGPSActivated.setImageResource(locationManager.isProviderEnabled(locationManager.GPS_PROVIDER)?R.drawable.unlocked :R.drawable.Locked);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,1,listener);
+        imageGPSActivated.setImageResource(locationManager.isProviderEnabled(locationManager.GPS_PROVIDER)? R.drawable.unLocked :R.drawable.Locked);
         }else{
             imageGPSActivated.setImageResource( R.drawable.Locked );
             imageGPSGranted.setImageResource( R.drawable.gpsoff );
