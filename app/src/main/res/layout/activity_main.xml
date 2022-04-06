@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
     android:gravity="center"
@@ -16,7 +15,7 @@
         android:text="Page d'accueil"
         android:textSize="35sp"
         tools:ignore="HardcodedText"
-        android:layout_marginBottom="40dp"/>
+        android:layout_marginBottom="25dp"/>
 
     <Button
         android:id="@+id/btnAideDosage"
@@ -27,6 +26,7 @@
         android:text="Mon aide au dosage"
         tools:ignore="HardcodedText"
         android:layout_marginBottom="15dp"
+
         />
 
     <Button
@@ -37,7 +37,10 @@
         android:gravity="center"
         android:text="Mes inventaires"
         tools:ignore="HardcodedText"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+
+
+       />
 
     <Button
         android:id="@+id/btnMarketPlace"
@@ -47,7 +50,10 @@
         android:gravity="center"
         android:text="Market Place"
         tools:ignore="HardcodedText"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="15dp"
+
+
+        />
 
     <Button
         android:id="@+id/btnIdeeRecette"
@@ -57,7 +63,9 @@
         android:gravity="center"
         android:text="Idées de recettes"
         tools:ignore="HardcodedText"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="15dp"
+
+        />
 
     <Button
         android:id="@+id/btnAlertePeremption"
@@ -67,18 +75,30 @@
         android:gravity="center"
         android:text="Mes alertes péremptions"
         tools:ignore="HardcodedText"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="15dp"
+
+       />
 
     <Button
         android:id="@+id/btnDeconnecte"
         android:layout_width="170dp"
         android:layout_height="50dp"
         android:layout_weight="1"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="0dp"
         android:gravity="center"
         android:text="Se deconnecter"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
 
+      />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/footer"
+        android:name="edu.polytech.repo_ihm.AppFooterFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_app_footer">
+
+    </androidx.fragment.app.FragmentContainerView>
 
 
 </LinearLayout>

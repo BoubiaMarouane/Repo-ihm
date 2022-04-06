@@ -1,7 +1,5 @@
 package edu.polytech.repo_ihm.gps;
 
-import static android.os.Build.VERSION_CODES.P;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -16,17 +14,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-
 import com.google.android.gms.maps.model.LatLng;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import edu.polytech.repo_ihm.R;
 
@@ -44,7 +40,7 @@ public class GPSFragment extends Fragment {
         placeNameTextView = rootView.findViewById(R.id.placeName);
         final ImageView imageGPSGranted = rootView.findViewById(R.id.imageGPSGranted);
         final ImageView imageGPSActivated = rootView.findViewById(R.id.imageGPSActivated);
-        boolean permissionGranted = ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        boolean permissionGranted = ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
 
         if(permissionGranted) {
             imageGPSGranted.setImageResource(R.drawable.gpson);
@@ -70,9 +66,9 @@ public class GPSFragment extends Fragment {
                     imageGPSActivated.setImageResource(R.drawable.locked);
                 }
             };
-        LocationManager locationManager = (LocationManager) (getActivity().getSystemService(Context.LOCATION_SERVICE));
+        LocationManager locationManager = (LocationManager) (requireActivity().getSystemService(Context.LOCATION_SERVICE));
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,1,listener);
-        imageGPSActivated.setImageResource(locationManager.isProviderEnabled(locationManager.GPS_PROVIDER)? R.drawable.unlocked :R.drawable.locked);
+        imageGPSActivated.setImageResource(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)? R.drawable.unlocked :R.drawable.locked);
         }else{
             imageGPSActivated.setImageResource( R.drawable.locked );
             imageGPSGranted.setImageResource( R.drawable.gpsoff );

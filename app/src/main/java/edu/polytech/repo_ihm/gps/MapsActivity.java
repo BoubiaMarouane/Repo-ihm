@@ -14,8 +14,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Objects;
+
 import edu.polytech.repo_ihm.R;
-import edu.polytech.repo_ihm.databinding.ActivityMainBinding;
+
 
 
 class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -24,13 +26,12 @@ class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        Objects.requireNonNull(mapFragment).getMapAsync(this);
     }
 
     GoogleMap map;
     private ListView listView;
 
-    private ActivityMainBinding binding;
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         map = googleMap;
