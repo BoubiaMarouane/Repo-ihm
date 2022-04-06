@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Repoihm">
         <activity
+            android:name=".AideDosage"
+            android:exported="false" />
+        <activity
+            android:name=".MesInventaires"
+            android:exported="false" />
+        <activity
             android:name=".MarketPlace"
             android:exported="false" />
         <!--
@@ -40,7 +46,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

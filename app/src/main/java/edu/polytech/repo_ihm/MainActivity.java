@@ -10,19 +10,21 @@ import android.widget.Button;
 import edu.polytech.repo_ihm.gps.MapsActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    button =(Button) findViewById(R.id.btnMarketPlace);
-    button.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(MainActivity.this, MarketPlace.class);
-            startActivity(intent);
-        }
-    });
+
     }
 
+    public void goToMesInventaires(View view) {
+        Intent intent = new Intent(MainActivity.this, MesInventaires.class);
+        startActivity(intent);
+    }
+
+    public void goToMarketPlace(View view) {
+        Intent intent = new Intent(MainActivity.this, MarketPlace.class);
+        startActivity(intent);
+    }
 }
