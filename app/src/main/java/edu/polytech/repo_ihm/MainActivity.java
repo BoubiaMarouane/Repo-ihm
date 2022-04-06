@@ -32,4 +32,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, AideDosage.class);
         startActivity(intent);
     }
+
+    public void goToIdeeRecettes(View view) {
+        Intent intent = new Intent(MainActivity.this, IdeeRecettes.class);
+        startActivity(intent);
+    }
 }
