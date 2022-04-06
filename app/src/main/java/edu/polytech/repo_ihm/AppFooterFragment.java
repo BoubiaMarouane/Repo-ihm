@@ -15,10 +15,10 @@ import android.widget.Button;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class AppFooterActivity extends Fragment {
+public class AppFooterFragment extends Fragment {
 
 
-    public AppFooterActivity() {
+    public AppFooterFragment() {
         // Required empty public constructor
     }
 
@@ -36,7 +36,7 @@ public class AppFooterActivity extends Fragment {
 
 
         //Contact ToDo
-        ((Button) rootView.findViewById(R.id.BtnAccueil)).setOnClickListener((View v) -> {
+        ((Button) rootView.findViewById(R.id.btnContact)).setOnClickListener((View v) -> {
 
         });
 
