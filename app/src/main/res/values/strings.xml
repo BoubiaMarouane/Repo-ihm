@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Repo-ihm</string>
+    <string name="placeName">placename</string>
 </resources>

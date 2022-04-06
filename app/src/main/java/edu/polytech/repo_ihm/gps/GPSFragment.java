@@ -62,19 +62,19 @@ public class GPSFragment extends Fragment {
 
                 @Override
                 public void onProviderEnabled(String provider) {
-                    imageGPSActivated.setImageResource(R.drawable.unLocked);
+                    imageGPSActivated.setImageResource(R.drawable.unlocked);
                 }
 
                 @Override
                 public void onProviderDisabled(String provider) {
-                    imageGPSActivated.setImageResource(R.drawable.Locked);
+                    imageGPSActivated.setImageResource(R.drawable.locked);
                 }
             };
         LocationManager locationManager = (LocationManager) (getActivity().getSystemService(Context.LOCATION_SERVICE));
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,1,listener);
-        imageGPSActivated.setImageResource(locationManager.isProviderEnabled(locationManager.GPS_PROVIDER)? R.drawable.unLocked :R.drawable.Locked);
+        imageGPSActivated.setImageResource(locationManager.isProviderEnabled(locationManager.GPS_PROVIDER)? R.drawable.unlocked :R.drawable.locked);
         }else{
-            imageGPSActivated.setImageResource( R.drawable.Locked );
+            imageGPSActivated.setImageResource( R.drawable.locked );
             imageGPSGranted.setImageResource( R.drawable.gpsoff );
         }
         return rootView;
