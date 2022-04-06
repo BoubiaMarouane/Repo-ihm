@@ -79,7 +79,7 @@
         android:text="Mes alertes péremptions"
         tools:ignore="HardcodedText"
         android:layout_marginBottom="15dp"
-
+        android:onClick="goToAlertePeremption"
        />
 
     <Button

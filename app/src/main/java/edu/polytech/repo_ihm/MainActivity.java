@@ -37,4 +37,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, IdeeRecettes.class);
         startActivity(intent);
     }
+    public void goToAlertePeremption(View view) {
+        Intent intent = new Intent(MainActivity.this, IdeeRecettes.class);
+        startActivity(intent);
+    }
 }

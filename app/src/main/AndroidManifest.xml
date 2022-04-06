@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Repoihm">
         <activity
+            android:name=".AlertePeremption"
+            android:exported="false" />
+        <activity
             android:name=".IdeeRecettes"
             android:exported="false" />
         <activity
