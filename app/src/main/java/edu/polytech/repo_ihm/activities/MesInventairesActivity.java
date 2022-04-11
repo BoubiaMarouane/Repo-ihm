@@ -1,4 +1,4 @@
-package edu.polytech.repo_ihm;
+package edu.polytech.repo_ihm.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,16 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class MarketPlace extends AppCompatActivity {
+import edu.polytech.repo_ihm.R;
+
+public class MesInventairesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_market_place_hp);
+        setContentView(R.layout.activity_mes_inventaires);
     }
 
     public void returnHomePage(View view) {
-        Intent intent = new Intent(MarketPlace.this, MainActivity.class);
+        Intent intent = new Intent(MesInventairesActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }

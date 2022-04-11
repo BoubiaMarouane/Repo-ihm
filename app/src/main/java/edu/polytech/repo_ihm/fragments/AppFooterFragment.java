@@ -1,4 +1,4 @@
-package edu.polytech.repo_ihm;
+package edu.polytech.repo_ihm.fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import edu.polytech.repo_ihm.R;
+import edu.polytech.repo_ihm.activities.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.

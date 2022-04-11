@@ -1,4 +1,4 @@
-package edu.polytech.repo_ihm;
+package edu.polytech.repo_ihm.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class IdeeRecettes extends AppCompatActivity {
+import edu.polytech.repo_ihm.R;
+
+public class IdeeRecettesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +17,7 @@ public class IdeeRecettes extends AppCompatActivity {
     }
 
     public void returnHomePage(View view) {
-        Intent intent = new Intent(IdeeRecettes.this, MainActivity.class);
+        Intent intent = new Intent(IdeeRecettesActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }

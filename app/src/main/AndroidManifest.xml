@@ -14,19 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Repoihm">
         <activity
-            android:name=".AlertePeremption"
+            android:name=".activities.AlertePeremptionActivity"
             android:exported="false" />
         <activity
-            android:name=".IdeeRecettes"
+            android:name=".activities.IdeeRecettesActivity"
             android:exported="false" />
         <activity
-            android:name=".AideDosage"
+            android:name=".activities.AideDosageActivity"
             android:exported="false" />
         <activity
-            android:name=".MesInventaires"
+            android:name=".activities.MesInventairesActivity"
             android:exported="false" />
         <activity
-            android:name=".MarketPlace"
+            android:name=".activities.MarketPlaceActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -44,7 +44,7 @@
             android:value="AIzaSyCpCBJSNRMiWM2fJuSz7jrK5rZopBcfptQ" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
