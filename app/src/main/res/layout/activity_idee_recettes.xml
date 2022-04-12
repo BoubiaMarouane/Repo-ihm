@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.IdeeRecettesActivity">
+    tools:context=".activities.ideeRecettes.IdeeRecettesActivity">
 
     <LinearLayout android:gravity="center_horizontal"
         android:id="@+id/linearAndroidLarge"
@@ -43,6 +43,30 @@
 
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="304dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="150dp"
+            android:textSize="15dp"
+            android:text="Appuyez sur le bouton pour avoir une recette au hasard" />
+
+        <TextView
+            android:id="@+id/tvReceiptName"
+            android:layout_width="95dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="40dp"
+            android:textSize="20dp"
+            android:text="" />
+        <Button
+            android:id="@+id/bGetReceipt"
+            android:layout_width="146dp"
+            android:layout_marginTop="80dp"
+            android:layout_height="wrap_content"
+            android:text="Get Receipt" />
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

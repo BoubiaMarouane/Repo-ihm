@@ -9,6 +9,7 @@ import android.view.View;
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.StartActivity;
 import edu.polytech.repo_ihm.account.AuthenticatorSingleton;
+import edu.polytech.repo_ihm.activities.ideeRecettes.IdeeRecettesActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void goToAlertePeremption(View view) {
-        Intent intent = new Intent(MainActivity.this, IdeeRecettesActivity.class);
+        Intent intent = new Intent(MainActivity.this, AlertePeremptionActivity.class);
         startActivity(intent);
     }
 }

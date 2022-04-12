@@ -30,7 +30,7 @@
             android:name=".activities.AlertePeremptionActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.IdeeRecettesActivity"
+            android:name=".activities.ideeRecettes.IdeeRecettesActivity"
             android:exported="false" />
         <activity
             android:name=".activities.AideDosageActivity"
