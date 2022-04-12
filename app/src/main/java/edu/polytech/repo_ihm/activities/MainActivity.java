@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import edu.polytech.repo_ihm.R;
+import edu.polytech.repo_ihm.StartActivity;
+import edu.polytech.repo_ihm.account.AuthenticatorSingleton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(!AuthenticatorSingleton.getInstance().isUserLogged()) {
+            Intent i = new Intent(MainActivity.this, StartActivity.class);
+            startActivity(i);
+        }
 
     }
 

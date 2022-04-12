@@ -65,10 +65,6 @@
             android:name=".account.RegisterActivity"
             android:exported="false">
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false">
-        </activity>
         <!-- android:apikey="Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==" -->
         <meta-data
             android:name="com.google.android.geo.AIzaSyCpCBJSNRMiWM2fJuSz7jrK5rZopBcfptQ"
