@@ -2,7 +2,10 @@ package edu.polytech.repo_ihm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+
+import edu.polytech.repo_ihm.account.AuthenticatorSingleton;
 
 public class MainActivity extends AppCompatActivity {
 
