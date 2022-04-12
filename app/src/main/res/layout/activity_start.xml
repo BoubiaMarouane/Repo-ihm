@@ -77,7 +77,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/footer"
-            android:name="edu.polytech.repo_ihm.AppFooterFragment"
+            android:name="edu.polytech.repo_ihm.fragments.AppFooterFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_app_footer">
