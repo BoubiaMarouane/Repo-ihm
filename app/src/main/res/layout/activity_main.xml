@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".activities.MainActivity"
     android:gravity="center"
     >
 
@@ -26,6 +26,7 @@
         android:text="Mon aide au dosage"
         tools:ignore="HardcodedText"
         android:layout_marginBottom="15dp"
+        android:onClick="goToAideDosage"
 
         />
 
@@ -38,7 +39,7 @@
         android:text="Mes inventaires"
         tools:ignore="HardcodedText"
         android:layout_marginBottom="20dp"
-
+        android:onClick="goToMesInventaires"
 
        />
 
@@ -51,6 +52,7 @@
         android:text="Market Place"
         tools:ignore="HardcodedText"
         android:layout_marginBottom="15dp"
+        android:onClick="goToMarketPlace"
 
 
         />
@@ -64,6 +66,7 @@
         android:text="Idées de recettes"
         tools:ignore="HardcodedText"
         android:layout_marginBottom="15dp"
+        android:onClick="goToIdeeRecettes"
 
         />
 
@@ -76,7 +79,7 @@
         android:text="Mes alertes péremptions"
         tools:ignore="HardcodedText"
         android:layout_marginBottom="15dp"
-
+        android:onClick="goToAlertePeremption"
        />
 
     <Button
@@ -93,7 +96,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/footer"
-        android:name="edu.polytech.repo_ihm.AppFooterFragment"
+        android:name="edu.polytech.repo_ihm.fragments.AppFooterFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout="@layout/fragment_app_footer">

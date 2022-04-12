@@ -1,4 +1,4 @@
-package edu.polytech.repo_ihm;
+package edu.polytech.repo_ihm.fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+
+import edu.polytech.repo_ihm.R;
+import edu.polytech.repo_ihm.activities.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.

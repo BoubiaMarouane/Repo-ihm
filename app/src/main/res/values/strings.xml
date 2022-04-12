@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Repo-ihm</string>
+    <string name="placeName">placename</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="msg_vendres_des_pr">Vendez vos produits</string>
+    <string name="msg_que_voulez_fair">Que souhaitez-vous faire ?</string>
+    <string name="msg_acheter_des_pro">Achetez des produits</string>
+    <string name="lbl_market_place2">Market Place</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="accueil">ACCUEIL</string>
     <string name="contact">CONTACT</string>
