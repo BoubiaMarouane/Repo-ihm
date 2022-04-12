@@ -1,53 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/footer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppFooterFragment"
     android:gravity="bottom"
-    android:id="@+id/footer"
+    tools:context=".AppFooterFragment"
 
     >
 
     <Button
-        android:id="@+id/BtnAccueil"
+        android:id="@+id/homeButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/accueil"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        android:fontFamily="@font/lato"
+        android:padding="10sp"
+        android:text="@string/home"
         android:textColor="@color/black"
-        />
+        android:textSize="12sp" />
 
     <Button
-        android:id="@+id/btnContact"
+        android:id="@+id/contactButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/lato"
+        android:padding="10sp"
         android:text="@string/contact"
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:textColor="@color/black"
-       />
+        android:textSize="12sp" />
 
     <Button
-        android:id="@+id/btnPolytech"
+        android:id="@+id/polytechButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/lato"
+        android:padding="10sp"
         android:text="@string/polytech"
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:textColor="@color/black"
-        />
+        android:textSize="12sp" />
 
     <Button
-        android:id="@+id/btnApropo"
+        android:id="@+id/aboutButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/a_propos"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        android:fontFamily="@font/lato"
+        android:padding="10sp"
+        android:text="@string/about"
         android:textColor="@color/black"
-        />
+        android:textSize="12sp" />
 
 
 </LinearLayout>

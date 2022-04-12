@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Repo-ihm</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="accueil">ACCUEIL</string>
     <string name="contact">CONTACT</string>
     <string name="polytech">POLYTECH</string>
@@ -17,4 +16,21 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="imggpsgranted">imgGpsGranted</string>
     <string name="imggpsactivated">imgGpsActivated</string>
+    <string name="se_connecter">Se connecter</string>
+    <string name="annuler">Annuler</string>
+    <string name="name">Nom</string>
+    <string name="login_text">Pour vous connecter, merci de rentrer les informations suivantes:</string>
+    <string name="back">Retour</string>
+    <string name="login">Connexion</string>
+    <string name="password">Mot de passe</string>
+    <string name="email_address">Adresse email</string>
+    <string name="about">A propos</string>
+    <string name="home">Accueil</string>
+    <string name="register_text">Pour vous inscrire, veuillez remplir les champs ci-dessous:</string>
+    <string name="firstname">Prénom</string>
+    <string name="confirm_password">Confirmer le mot de passe</string>
+    <string name="welcome">Bienvenue</string>
+    <string name="toLogin">Se connecter</string>
+    <string name="createAnAccount">Créer un compte</string>
+    <string name="welcomeMessage">Vous en avez marre de gaspiller votre nourriture? Grâce à cette application, gérer le dosage, vos inventaires, vendez certains aliments, découvrez de nouvelles recettes et soyez alerté si un de vos produits va bientôt périmer !</string>
 </resources>
