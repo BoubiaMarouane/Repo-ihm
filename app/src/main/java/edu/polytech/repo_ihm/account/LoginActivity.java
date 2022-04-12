@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             Thread login = new Thread(() -> {
                 AuthenticatorSingleton.getInstance().logIn(emailInput.getText().toString(), passwordInput.getText().toString());
                 try {
-                    AuthenticatorSingleton.getInstance().loginThread.join();
+                    AuthenticatorSingleton.getInstance().logInThread.join();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -60,6 +60,8 @@ public class LoginActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    dialog.cancel();
+                    finish();
                 }
             });
             login.start();

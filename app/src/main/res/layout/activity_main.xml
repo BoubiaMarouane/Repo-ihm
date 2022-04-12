@@ -83,7 +83,7 @@
        />
 
     <Button
-        android:id="@+id/btnDeconnecte"
+        android:id="@+id/logoutButton"
         android:layout_width="170dp"
         android:layout_height="50dp"
         android:layout_weight="1"

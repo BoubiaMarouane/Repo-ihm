@@ -24,4 +24,8 @@ public class User {
 
     public static void main(String[] args) {
     }
+
+    public String getSessionToken() {
+        return session_token;
+    }
 }
