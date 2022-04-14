@@ -56,9 +56,13 @@
             android:name=".account.RegisterActivity"
             android:exported="false">
         </activity>
-        <!-- android:apikey="Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==" -->
+
+        <activity
+            android:name=".gps.MapsActivity"
+            android:exported="false">
+        </activity>
         <meta-data
-            android:name="com.google.android.geo.AIzaSyCpCBJSNRMiWM2fJuSz7jrK5rZopBcfptQ"
+            android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCpCBJSNRMiWM2fJuSz7jrK5rZopBcfptQ" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -72,5 +76,6 @@
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
     </application>
+
 
 </manifest>
