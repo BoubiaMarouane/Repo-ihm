@@ -14,7 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Repoihm.NoActionBar"
         android:usesCleartextTraffic="true">
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <activity
+            android:name=".activities.SelectedInventory"
+            android:exported="false" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
 
         <activity
             android:name=".StartActivity"
@@ -25,7 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name=".activities.AlertePeremptionActivity"
             android:exported="false" />
@@ -44,33 +49,19 @@
         <activity
             android:name=".activities.MainActivity"
             android:exported="false" />
-
-
-
-
         <activity
             android:name=".account.LoginActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".account.RegisterActivity"
-            android:exported="false">
-        </activity>
-        <!-- android:apikey="Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==" -->
+            android:exported="false"></activity>
+        <activity
+            android:name=".gps.MapsActivity"
+            android:exported="false"></activity>
+
         <meta-data
-            android:name="com.google.android.geo.AIzaSyCpCBJSNRMiWM2fJuSz7jrK5rZopBcfptQ"
+            android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCpCBJSNRMiWM2fJuSz7jrK5rZopBcfptQ" />
-        <!--
-             TODO: Before you run your application, you need a Google Maps API key.
-
-             To get one, follow the directions here:
-
-                https://developers.google.com/maps/documentation/android-sdk/get-api-key
-
-             Once you have your API key (it starts with "AIza"), define a new property in your
-             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
-             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
-        -->
     </application>
 
 </manifest>

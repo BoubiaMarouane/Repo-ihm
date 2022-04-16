@@ -41,4 +41,7 @@
     <string name="welcomeMessage">Vous en avez marre de gaspiller votre nourriture? Grâce à cette application, gérer le dosage, vos inventaires, vendez certains aliments, découvrez de nouvelles recettes et soyez alerté si un de vos produits va bientôt périmer !</string>
     <string name="register">S\'inscrire</string>
     <string name="registerTitle">Inscription</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="img_product">img_product</string>
 </resources>

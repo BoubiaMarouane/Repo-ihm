@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:contentDescription="@string/img_product"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/img_product"
+        >
+
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mayonnaise"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_margin="5dp"
+            android:textSize="20sp"
+            android:id="@+id/tv_product_name">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="qty: 80"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            android:id="@+id/tv_product_qty">
+
+        </TextView>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
