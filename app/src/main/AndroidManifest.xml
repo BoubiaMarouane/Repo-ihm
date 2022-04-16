@@ -51,17 +51,21 @@
             android:exported="false" />
         <activity
             android:name=".account.LoginActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".account.RegisterActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".gps.MapsActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCpCBJSNRMiWM2fJuSz7jrK5rZopBcfptQ" />
+
+        <meta-data
+            android:name="API_KEY"
+            android:value="Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==" />
     </application>
 
 </manifest>

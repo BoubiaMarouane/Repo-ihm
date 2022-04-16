@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Repo-ihm</string>
+    <string name="app_name">DontWasteIt</string>
     <string name="placeName">placename</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="msg_vendres_des_pr">Vendez vos produits</string>
@@ -7,10 +7,10 @@
     <string name="msg_acheter_des_pro">Achetez des produits</string>
     <string name="lbl_market_place2">Market Place</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="accueil">ACCUEIL</string>
-    <string name="contact">CONTACT</string>
-    <string name="polytech">POLYTECH</string>
-    <string name="a_propos">A PROPOS</string>
+    <string name="accueil">Accueil</string>
+    <string name="contact">Contact</string>
+    <string name="polytech">Polytech</string>
+    <string name="a_propos">À propos</string>
     <string name="title_activity_test">testActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

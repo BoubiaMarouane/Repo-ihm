@@ -1,5 +1,6 @@
 package edu.polytech.repo_ihm.activities;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -30,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
         }
 
+
+
+
+
         Button logoutButton = findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener((View v) -> {
             AuthenticatorSingleton.getInstance().logOut(AuthenticatorSingleton.getInstance().getCurrentUser().getSessionToken());
@@ -46,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
             AuthenticatorSingleton.getInstance().resetInstance();
             startActivity(new Intent(MainActivity.this, StartActivity.class));
             finish();
+        });
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finishAffinity();
+            }
         });
 
     }

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    style="@style/Theme.Repoihm.DefaultPadding"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activities.MainActivity"
@@ -9,90 +10,121 @@
     >
 
     <TextView
-        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Page d'accueil"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="25dp"
+        android:text="@string/accueil"
         android:textSize="35sp"
-        tools:ignore="HardcodedText"
-        android:layout_marginBottom="25dp"/>
+        tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/btnAideDosage"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="32sp"
+        android:layout_marginRight="32sp"
         android:layout_weight="1"
-        android:gravity="center"
-        android:text="Mon aide au dosage"
-        tools:ignore="HardcodedText"
-        android:layout_marginBottom="15dp"
-        android:onClick="goToAideDosage"
+        android:gravity="center|center_vertical"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        tools:ignore="InefficientWeight">
 
-        />
+        <Button
+            android:id="@+id/btnAideDosage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="goToAideDosage"
+            android:text="Mon aide au dosage"
+            tools:ignore="HardcodedText"
 
-    <Button
-        android:id="@+id/btnInventaire"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Mes inventaires"
-        tools:ignore="HardcodedText"
-        android:layout_marginBottom="20dp"
-        android:onClick="goToMesInventaires"
+            />
 
-       />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16sp"
+            android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/btnMarketPlace"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Market Place"
-        tools:ignore="HardcodedText"
-        android:layout_marginBottom="15dp"
-        android:onClick="goToMarketPlace"
+        <Button
+            android:id="@+id/btnInventaire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="goToMesInventaires"
+            android:text="Mes inventaires"
+            tools:ignore="HardcodedText"
+
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16sp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnMarketPlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="goToMarketPlace"
+            android:text="Market Place"
+            tools:ignore="HardcodedText"
 
 
-        />
+            />
 
-    <Button
-        android:id="@+id/btnIdeeRecette"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Idées de recettes"
-        tools:ignore="HardcodedText"
-        android:layout_marginBottom="15dp"
-        android:onClick="goToIdeeRecettes"
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16sp"
+            android:layout_weight="1" />
 
-        />
+        <Button
+            android:id="@+id/btnIdeeRecette"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="goToIdeeRecettes"
+            android:text="Idées de recettes"
+            tools:ignore="HardcodedText"
 
-    <Button
-        android:id="@+id/btnAlertePeremption"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Mes alertes péremptions"
-        tools:ignore="HardcodedText"
-        android:layout_marginBottom="15dp"
-        android:onClick="goToAlertePeremption"
-       />
+            />
 
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        android:layout_marginTop="0dp"
-        android:gravity="center"
-        android:text="Se deconnecter"
-        tools:ignore="HardcodedText"
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16sp"
+            android:layout_weight="1" />
 
-      />
+        <Button
+            android:id="@+id/btnAlertePeremption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="goToAlertePeremption"
+            android:text="Mes alertes péremptions"
+            tools:ignore="HardcodedText" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16sp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Se deconnecter"
+            tools:ignore="HardcodedText"
+
+            />
+    </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/footer"

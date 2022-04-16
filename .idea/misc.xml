@@ -4,9 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Thoma/.gradle/caches/transforms-3/946189dceec033ab2c0967848dcb0fb3/transformed/appcompat-1.4.1/res/drawable/abc_btn_borderless_material.xml" value="0.1" />
+        <entry key="..\:/Users/Thoma/AndroidStudioProjects/ihm_dwi/app/src/main/res/drawable/mainmenuseparator.xml" value="0.409" />
         <entry key="..\:/Users/Thoma/AndroidStudioProjects/ihm_dwi/app/src/main/res/drawable/textview_border.xml" value="0.3155" />
         <entry key="..\:/Users/Thoma/AndroidStudioProjects/ihm_dwi/app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="..\:/Users/Thoma/AndroidStudioProjects/ihm_dwi/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Thoma/AndroidStudioProjects/ihm_dwi/app/src/main/res/layout/activity_main.xml" value="0.4831719686491471" />
         <entry key="..\:/Users/Thoma/AndroidStudioProjects/ihm_dwi/app/src/main/res/layout/activity_mes_inventaires.xml" value="0.5398550724637681" />
         <entry key="..\:/Users/Thoma/AndroidStudioProjects/ihm_dwi/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/Thoma/AndroidStudioProjects/ihm_dwi/app/src/main/res/layout/activity_start.xml" value="0.3125" />
