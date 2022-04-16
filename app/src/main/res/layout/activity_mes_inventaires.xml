@@ -43,6 +43,15 @@
 
                 </LinearLayout>
             </LinearLayout>
+
+        <fragment
+            android:id="@+id/lv_inventory"
+            android:name="edu.polytech.repo_ihm.fragments.InventoryListFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
