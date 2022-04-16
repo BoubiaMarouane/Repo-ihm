@@ -2,10 +2,14 @@ package edu.polytech.repo_ihm.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import org.json.JSONException;
 
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.StartActivity;
@@ -15,6 +19,7 @@ import edu.polytech.repo_ihm.activities.ideeRecettes.IdeeRecettesActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("ApplySharedPref")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove("session_token");
+            editor.commit();
             AuthenticatorSingleton.getInstance().resetInstance();
             startActivity(new Intent(MainActivity.this, StartActivity.class));
             finish();

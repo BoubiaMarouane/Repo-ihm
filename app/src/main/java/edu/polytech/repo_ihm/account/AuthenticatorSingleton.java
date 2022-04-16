@@ -5,6 +5,7 @@ import edu.polytech.repo_ihm.api.RequestMessage;
 public class AuthenticatorSingleton {
     private static AuthenticatorSingleton instancedSingleton = null;
     public Thread logInThread;
+    public Thread registerThread;
     public Thread logOutThread;
     public Thread setCurrentUserThread;
     volatile public RequestMessage lastRM;
@@ -28,6 +29,11 @@ public class AuthenticatorSingleton {
     public void logIn(String email, String password) {
         this.logInThread = new Thread(() -> lastRM = new RequestMessage(200, "{\"session_token\": \"1234\"}"));
         this.logInThread.start();
+    }
+
+    public void register(String firstname, String name, String email, String password, String confirmPassword) {
+        this.registerThread = new Thread(() -> lastRM = new RequestMessage(200, "{\"session_token\": \"1234\"}"));
+        this.registerThread.start();
     }
 
     public void setCurrentUser(String session_token) {

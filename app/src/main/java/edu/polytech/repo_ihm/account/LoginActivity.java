@@ -1,11 +1,14 @@
 package edu.polytech.repo_ihm.account;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,11 +30,11 @@ public class LoginActivity extends AppCompatActivity {
         EditText passwordInput = findViewById(R.id.passwordInput);
 
         Button loginButton = findViewById(R.id.loginButton);
-        Button cancelLoginButton = findViewById(R.id.cancelLogin);
+        Button cancelButton = findViewById(R.id.cancelLogin);
 
         loginButton.setOnClickListener((View v) -> {
             loginButton.setEnabled(false);
-            cancelLoginButton.setEnabled(false);
+            cancelButton.setEnabled(false);
             emailInput.setEnabled(false);
             passwordInput.setEnabled(false);
 
@@ -40,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             builder.setMessage("Chargement en cours, merci de patienter").setTitle("Connexion").setCancelable(false);
             AlertDialog dialog = builder.create();
             dialog.show();
-            Thread login = new Thread(() -> {
+            @SuppressLint("ApplySharedPref") Thread login = new Thread(() -> {
                 AuthenticatorSingleton.getInstance().logIn(emailInput.getText().toString(), passwordInput.getText().toString());
                 try {
                     AuthenticatorSingleton.getInstance().logInThread.join();
@@ -59,6 +62,15 @@ public class LoginActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    try {
+                        editor.putString("session_token", String.valueOf(response.get("session_token")));
+                    } catch (JSONException ignored) {
+                    }
+                    editor.commit();
+
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     dialog.cancel();
                     finish();
@@ -67,10 +79,24 @@ public class LoginActivity extends AppCompatActivity {
             login.start();
         });
 
-        cancelLoginButton.setOnClickListener((View v) -> startActivity(new Intent(LoginActivity.this, StartActivity.class)));
+        cancelButton.setOnClickListener((View v) -> actionBack());
 
         if (AuthenticatorSingleton.getInstance().isUserLogged())
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                actionBack();
+            }
+        });
+    }
+
+
+    public void actionBack() {
+        startActivity(new Intent(LoginActivity.this, StartActivity.class));
+        finish();
     }
 
 
