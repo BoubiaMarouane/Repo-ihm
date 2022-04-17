@@ -26,8 +26,6 @@ public class InventoryListFragment extends Fragment implements AdapterView.OnIte
 
 
 
-    //private Listener listener;
-
     public InventoryListFragment() {
     }
 

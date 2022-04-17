@@ -34,15 +34,14 @@ public class SelectedInventory extends AppCompatActivity {
                                             new Product("riz", 1, R.drawable.riz)));
 
         Toast.makeText(this,inventory.getProducts().get(0).getName(),Toast.LENGTH_SHORT).show();
-
-        Fragment fListProd = new ProductListFragment();
+        Fragment frag = new ProductListFragment();
         Bundle args = new Bundle();
-        args.putSerializable("product_list", (Serializable) inventory.getProducts());
-        fListProd.setArguments(args);
+        args.putInt("IV_ID", index);
+        frag.setArguments(args);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.replace(R.id.frag_product_list, fListProd);
+        ft.replace(R.id.frag_product_list, frag);
         ft.addToBackStack(null);
         ft.commit();
 

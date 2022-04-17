@@ -44,4 +44,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="img_product">img_product</string>
+    <string name="ajouter_un_produit">Ajouter un produit</string>
+    <string name="scanner">Scanner</string>
+    <string name="nom_du_produit">Nom du produit</string>
+    <string name="date_p">Date de péremption (ex 01/01/2023)</string>
+    <string name="quantit_nombre_de_paquet">quantité (nombre de paquet)</string>
+    <string name="ajouter">AJOUTER</string>
 </resources>
