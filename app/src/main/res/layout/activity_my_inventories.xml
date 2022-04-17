@@ -4,10 +4,9 @@
     style="@style/Theme.Repoihm.DefaultPadding"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MesInventairesActivity">
+    tools:context=".activities.MyInventoriesActivity">
 
     <LinearLayout
-        android:id="@+id/linearAndroidLarge"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
@@ -19,13 +18,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtMarketPlace"
+                android:id="@+id/title"
                 style="@style/Theme.Repoihm.TitleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/my_inventories" />
 
-            <Button style="@style/Theme.Repoihm.BackButton"/>
+            <Button style="@style/Theme.Repoihm.BackButton" />
 
         </LinearLayout>
 
@@ -44,6 +43,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3sp"
+                android:background="#000" />
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -53,10 +57,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#000" />
 
                     <TextView
                         android:id="@+id/textView2"
