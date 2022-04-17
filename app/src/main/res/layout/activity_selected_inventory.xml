@@ -1,123 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Theme.Repoihm.DefaultPadding"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SelectedInventory">
+    tools:context=".activities.SelectedInventory"
+    android:orientation="vertical">
 
-
-    <LinearLayout
+    <fragment
+        android:id="@+id/frag_product_list"
+        android:name="edu.polytech.repo_ihm.fragments.ProductListFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="360dp"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/title"
-                style="@style/Theme.Repoihm.TitleText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="" />
-
-            <Button
-                style="@style/Theme.Repoihm.BackButton"
-                android:onClick="back" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            tools:ignore="InefficientWeight">
-
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/frag_product_list"
-                android:name="edu.polytech.repo_ihm.fragments.ProductListFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                />
+        />
 
 
-            <View
-                android:id="@+id/divider"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@color/black" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/ajouter_un_produit"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity="center_horizontal"
-                android:text="@string/ajouter_un_produit"
-                android:textSize="20sp"
-                android:textStyle="bold">
+    </TextView>
 
-            </TextView>
+    <Button
+        android:id="@+id/b_scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/scanner" />
 
-            <Button
-                android:id="@+id/b_scan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/scanner" />
+    <EditText
+        android:id="@+id/et_name_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nom_du_produit"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        android:autofillHints="" />
 
-            <EditText
-                android:id="@+id/et_name_product_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:hint="@string/nom_du_produit"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:textColorHint="#757575" />
+    <EditText
+        android:id="@+id/et_product_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/date_p"
+        android:inputType="datetime"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        android:autofillHints="" />
 
-            <EditText
-                android:id="@+id/et_product_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:hint="@string/date_p"
-                android:inputType="datetime"
-                android:minHeight="48dp"
-                android:textColorHint="#757575" />
+    <EditText
+        android:id="@+id/et_product_qty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/quantit_nombre_de_paquet"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        android:autofillHints="" />
 
-            <EditText
-                android:id="@+id/et_product_qty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:hint="@string/quantit_nombre_de_paquet"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:textColorHint="#757575" />
+    <Button
+        android:id="@+id/b_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ajouter"
+        android:onClick="submit"
+       />
 
-            <Button
-                android:id="@+id/b_submit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ajouter" />
-        </LinearLayout>
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/footer"
-            android:name="edu.polytech.repo_ihm.fragments.AppFooterFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_app_footer">
-
-        </androidx.fragment.app.FragmentContainerView>
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

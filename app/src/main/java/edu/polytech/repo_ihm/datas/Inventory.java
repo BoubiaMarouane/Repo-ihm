@@ -2,6 +2,7 @@ package edu.polytech.repo_ihm.datas;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Inventory implements Serializable {
@@ -34,5 +35,22 @@ public class Inventory implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public boolean containProduct(String research){
+        return products.stream().map(Product::getName).anyMatch(name -> name.equals(research));
+    }
+
+    public void addProduct(Product p){
+        this.products.add(p);
+    }
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", products=" + Arrays.toString(products.toArray()) +
+                '}';
     }
 }

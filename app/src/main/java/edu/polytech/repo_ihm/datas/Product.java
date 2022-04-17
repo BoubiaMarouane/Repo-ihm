@@ -7,11 +7,13 @@ public class Product implements Serializable {
     private String name;
     private int quantity;
     private int img;
+    private String dateP;
 
-    public Product(String name, int quantity, int img) {
+    public Product(String name, int quantity, int img, String dateP) {
         this.name = name;
         this.quantity = quantity;
         this.img = img;
+        this.dateP = dateP;
     }
 
     public String getName() {
@@ -34,4 +36,25 @@ public class Product implements Serializable {
         return this.img;
     }
 
+    public String getDateP() {
+        return dateP;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
+    }
+
+    public void setDateP(String dateP) {
+        this.dateP = dateP;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", img=" + img +
+                ", dateP='" + dateP + '\'' +
+                '}';
+    }
 }
