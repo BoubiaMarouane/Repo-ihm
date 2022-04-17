@@ -50,7 +50,7 @@
         <item name="android:layout_width">wrap_content</item>
     </style>
 
-    <style name="Theme.Repoihm.InventoryListView" parent="Widget.AppCompat.ListView.DropDown">
+    <style name="Theme.Repoihm.ListView" parent="Widget.AppCompat.ListView.DropDown">
         <item name="android:divider">#26000000</item>
         <item name="android:dividerHeight">1dp</item>
         <item name="android:textSize">16sp</item>

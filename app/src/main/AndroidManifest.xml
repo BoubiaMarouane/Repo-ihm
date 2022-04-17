@@ -41,7 +41,7 @@
             android:name=".activities.AideDosageActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.MesInventairesActivity"
+            android:name=".activities.MyInventoriesActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MarketPlaceActivity"

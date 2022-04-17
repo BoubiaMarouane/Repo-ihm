@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
@@ -27,7 +30,15 @@ public class SelectedInventory extends AppCompatActivity {
         setContentView(R.layout.activity_selected_inventory);
 
         int index = getIntent().getIntExtra("IV_ID",0);
-        inventory = InventoryList.getInstance().get(index);
+
+        this.inventory = InventoryList.getInstance().getById(index);
+        if(inventory == null)
+            back(this.getCurrentFocus());
+
+        TextView title = findViewById(R.id.title);
+        title.setText(inventory.getName());
+        title.setTextSize(20);
+
         inventory.setProducts(Arrays.asList(new Product("mayo", 1, R.drawable.mayo),
                                             new Product("riz", 1, R.drawable.riz),
                                             new Product("mayo", 1, R.drawable.mayo),
@@ -45,5 +56,10 @@ public class SelectedInventory extends AppCompatActivity {
         ft.addToBackStack(null);
         ft.commit();
 
+    }
+
+    public void back(View view) {
+        Intent intent = new Intent(SelectedInventory.this, MyInventoriesActivity.class);
+        startActivity(intent);
     }
 }

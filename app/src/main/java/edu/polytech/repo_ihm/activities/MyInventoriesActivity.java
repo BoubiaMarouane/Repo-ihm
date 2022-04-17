@@ -8,16 +8,16 @@ import android.view.View;
 
 import edu.polytech.repo_ihm.R;
 
-public class MesInventairesActivity extends AppCompatActivity {
+public class MyInventoriesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mes_inventaires);
+        setContentView(R.layout.activity_my_inventories);
     }
 
     public void returnHomePage(View view) {
-        Intent intent = new Intent(MesInventairesActivity.this, MainActivity.class);
+        Intent intent = new Intent(MyInventoriesActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }

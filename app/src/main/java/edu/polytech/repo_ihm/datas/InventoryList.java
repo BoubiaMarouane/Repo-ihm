@@ -28,6 +28,10 @@ public class InventoryList extends ArrayList<Inventory> {
         return this;
     }
 
+    public Inventory getById(int id) {
+        return this.stream().filter(inventory -> inventory.getId() == id).findFirst().orElse(null);
+    }
+
     public String[] getAllInventoryNames(){
         return this.stream().map(Inventory::getName).toArray(String[]::new);
 

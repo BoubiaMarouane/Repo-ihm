@@ -10,12 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import org.json.JSONException;
-
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.StartActivity;
 import edu.polytech.repo_ihm.account.AuthenticatorSingleton;
-import edu.polytech.repo_ihm.account.LoginActivity;
 import edu.polytech.repo_ihm.activities.ideeRecettes.IdeeRecettesActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -66,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void goToMesInventaires(View view) {
-        Intent intent = new Intent(MainActivity.this, MesInventairesActivity.class);
+        Intent intent = new Intent(MainActivity.this, MyInventoriesActivity.class);
         startActivity(intent);
     }
 

@@ -10,7 +10,7 @@
 
     <ListView
         android:id="@+id/lv_inventory"
-        style="@style/Theme.Repoihm.InventoryListView"
+        style="@style/Theme.Repoihm.ListView"
         android:layout_width="match_parent"
         android:layout_height="150sp" />
 

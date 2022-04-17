@@ -71,7 +71,7 @@ class InventoryListAdapter extends BaseAdapter {
 
         @SuppressLint("ViewHolder") View view = layoutInflater.inflate(R.layout.inventory_list, parent, false);
 
-        TextView pName = view.findViewById(R.id.inventoryName);
+        TextView pName = view.findViewById(R.id.productName);
 
         Inventory p = inventories.get(i);
         pName.setText(p.getName());
