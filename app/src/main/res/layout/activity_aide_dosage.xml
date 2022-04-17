@@ -29,7 +29,7 @@
                 android:textSize="20dp" />
 
             <Button
-                android:id="@+id/returnToHomePageButton"
+                android:id="@+id/backButton"
                 android:layout_width="wrap_content"
                 android:layout_height="37dp"
                 android:onClick="returnHomePage"

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".account.LoginActivity"
+    style="@style/Theme.Repoihm.DefaultPadding"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/Theme.Repoihm.DefaultPadding">
+    tools:context=".account.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:text="@string/login" />
 
             <TextView
-                android:id="@+id/Space"
+                android:id="@+id/backButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/back" />
@@ -53,19 +53,19 @@
                 android:id="@+id/emailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="email"
                 android:ems="10"
-                android:inputType="textEmailAddress"
                 android:hint="@string/email_address"
-                android:autofillHints="email" />
+                android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/passwordInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="password"
                 android:ems="10"
-                android:inputType="textPassword"
                 android:hint="@string/password"
-                android:autofillHints="password" />
+                android:inputType="textPassword" />
 
             <LinearLayout
                 android:layout_width="match_parent"
