@@ -12,7 +12,6 @@ public class Product implements Serializable {
         this.name = name;
         this.quantity = quantity;
         this.img = img;
-
     }
 
     public String getName() {
@@ -34,4 +33,5 @@ public class Product implements Serializable {
     public int getImg() {
         return this.img;
     }
+
 }

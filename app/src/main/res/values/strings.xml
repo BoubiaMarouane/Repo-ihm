@@ -51,4 +51,6 @@
     <string name="quantit_nombre_de_paquet">quantité (nombre de paquet)</string>
     <string name="ajouter">AJOUTER</string>
     <string name="my_inventories">Mes Inventaires</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 </resources>

@@ -1,18 +1,19 @@
 package edu.polytech.repo_ihm.datas;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InventoryList extends ArrayList<Inventory> {
 
     private static InventoryList instance = null;
 
     private InventoryList() {
-        add(new Inventory("Famille"));
-        add(new Inventory("Camping"));
-        add(new Inventory("soiree Etu"));
-        add(new Inventory("Anniv de Jhon Cena"));
-        add(new Inventory("t1"));
-        add(new Inventory("t2"));
+        add(new Inventory(1,"Famille"));
+        add(new Inventory(2,"Camping"));
+        add(new Inventory(3,"soiree Etu"));
+        add(new Inventory(4,"Anniv de Jhon Cena"));
+        add(new Inventory(5,"t1"));
+        add(new Inventory(6,"t2"));
     }
 
 
@@ -21,6 +22,10 @@ public class InventoryList extends ArrayList<Inventory> {
         if (instance == null)
             instance = new InventoryList();
         return instance;
+    }
+
+    public List<Inventory> getInventories() {
+        return this;
     }
 
     public String[] getAllInventoryNames(){

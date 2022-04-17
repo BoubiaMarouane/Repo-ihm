@@ -6,11 +6,12 @@
     tools:context=".fragments.InventoryListFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+
     <ListView
         android:id="@+id/lv_inventory"
+        style="@style/Theme.Repoihm.InventoryListView"
         android:layout_width="match_parent"
-        android:layout_height="150sp"
-
-        />
+        android:layout_height="150sp" />
 
 </FrameLayout>

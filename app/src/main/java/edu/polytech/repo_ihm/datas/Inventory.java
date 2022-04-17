@@ -6,12 +6,14 @@ import java.util.List;
 
 public class Inventory implements Serializable {
 
+    private int id;
     private String name;
     private List<Product> products;
 
-    public Inventory(String name) {
+    public Inventory(int id, String name) {
+        this.id = id;
         this.name = name;
-        this.products = new ArrayList<>();
+        this.products =  new ArrayList<>();
     }
 
     public String getName() {
@@ -28,5 +30,9 @@ public class Inventory implements Serializable {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public int getId() {
+        return id;
     }
 }
