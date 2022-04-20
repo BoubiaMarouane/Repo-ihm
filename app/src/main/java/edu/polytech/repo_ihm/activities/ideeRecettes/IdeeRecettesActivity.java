@@ -37,6 +37,7 @@ public class IdeeRecettesActivity extends AppCompatActivity {
         bGetReceipt = (Button) findViewById(R.id.bGetReceipt);
         controller =  new IdeeRecettesController(this);
 
+
         bGetReceipt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
