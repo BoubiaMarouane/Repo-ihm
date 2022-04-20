@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Repoihm.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MarketPlace.BuyProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.SelectedInventory"
             android:exported="false" />
 
@@ -47,6 +50,9 @@
             android:name=".activities.MarketPlaceActivity"
             android:exported="false" />
         <activity
+            android:name=".MarketPlace.VendreProd"
+            android:exported="false" />
+        <activity
             android:name=".activities.MainActivity"
             android:exported="false" />
         <activity
@@ -62,7 +68,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCpCBJSNRMiWM2fJuSz7jrK5rZopBcfptQ" />
-
         <meta-data
             android:name="API_KEY"
             android:value="Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==" />
