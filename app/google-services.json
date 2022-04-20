@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "50842991270",
+    "project_id": "ihm-app-f0cb2",
+    "storage_bucket": "ihm-app-f0cb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50842991270:android:6d3d736c21c1f97d389267",
+        "android_client_info": {
+          "package_name": "edu.polytech.repo_ihm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50842991270-fg4hjg2qnphhuc0u8d68e8oj7c2ja9bd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.polytech.repo_ihm",
+            "certificate_hash": "8bb9ae2636b258fb1c016528db74874b7f9b17e8"
+          }
+        },
+        {
+          "client_id": "50842991270-lubnk1tgr4siui4juda592k549h29sbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrvm2QmhD9fX4yKHazKp2Biwg8YDb7Xq8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "50842991270-lubnk1tgr4siui4juda592k549h29sbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
