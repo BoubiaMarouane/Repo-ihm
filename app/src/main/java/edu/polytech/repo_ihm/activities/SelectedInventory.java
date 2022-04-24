@@ -1,19 +1,16 @@
 package edu.polytech.repo_ihm.activities;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.datas.Inventory;
@@ -38,10 +35,13 @@ public class SelectedInventory extends AppCompatActivity {
         getIv(inventoryId).setProducts(mockProducts);
         generateFragListProducts();
 
+        TextView title = findViewById(R.id.title);
+        title.setText(getIv(inventoryId).getName());
+
 
     }
 
-    void generateFragListProducts(){
+    void generateFragListProducts() {
         Fragment frag = new ProductListFragment();
         Bundle args = new Bundle();
         args.putInt("IV_ID", inventoryId);
@@ -54,8 +54,6 @@ public class SelectedInventory extends AppCompatActivity {
     }
 
 
-
-
     public void submit(View view) {
         String pName = ((EditText) findViewById(R.id.et_name_product)).getText().toString();
         String pQty = ((EditText) findViewById(R.id.et_product_qty)).getText().toString();
@@ -65,7 +63,12 @@ public class SelectedInventory extends AppCompatActivity {
         generateFragListProducts();
     }
 
-        public Inventory getIv(int id) {
-            return InventoryList.getInstance().get(id);
-        }
+    public Inventory getIv(int id) {
+        return InventoryList.getInstance().get(id);
+    }
+
+    public void back(View view) {
+        Intent intent = new Intent(SelectedInventory.this, MyInventoriesActivity.class);
+        startActivity(intent);
+    }
 }

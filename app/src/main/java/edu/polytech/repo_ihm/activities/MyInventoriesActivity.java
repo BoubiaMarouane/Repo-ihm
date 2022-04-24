@@ -16,7 +16,7 @@ public class MyInventoriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_inventories);
     }
 
-    public void returnHomePage(View view) {
+    public void back(View view) {
         Intent intent = new Intent(MyInventoriesActivity.this, MainActivity.class);
         startActivity(intent);
     }

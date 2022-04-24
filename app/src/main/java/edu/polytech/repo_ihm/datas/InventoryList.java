@@ -8,12 +8,12 @@ public class InventoryList extends ArrayList<Inventory> {
     private static InventoryList instance = null;
 
     private InventoryList() {
-        add(new Inventory(1,"Famille"));
-        add(new Inventory(2,"Camping"));
-        add(new Inventory(3,"soiree Etu"));
-        add(new Inventory(4,"Anniv de Jhon Cena"));
-        add(new Inventory(5,"t1"));
-        add(new Inventory(6,"t2"));
+        add(new Inventory(0,"Famille"));
+        add(new Inventory(1,"Camping"));
+        add(new Inventory(2,"soiree Etu"));
+        add(new Inventory(3,"Anniv de Jhon Cena"));
+        add(new Inventory(4,"t1"));
+        add(new Inventory(5,"t2"));
     }
 
 

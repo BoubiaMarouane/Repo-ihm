@@ -18,7 +18,6 @@ import edu.polytech.repo_ihm.account.RegisterActivity;
 import edu.polytech.repo_ihm.activities.MainActivity;
 
 public class StartActivity extends AppCompatActivity {
-    public static String API_HOST = "http://47a0-109-210-108-136.eu.ngrok.io";
 
 
     @Override

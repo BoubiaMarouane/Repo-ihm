@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/my_inventories" />
 
-            <Button style="@style/Theme.Repoihm.BackButton" />
+            <Button style="@style/Theme.Repoihm.BackButton"
+                android:onClick="back" />
 
         </LinearLayout>
 
