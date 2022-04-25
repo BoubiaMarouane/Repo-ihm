@@ -2,25 +2,24 @@ package edu.polytech.repo_ihm.datas;
 
 public class Recipe {
 
-    String img_link;
-    String recipe_link;
+    String image;
+    String link;
     String title;
 
     public Recipe() {}
 
-    public Recipe(String img_link, String recipe_link, String title) {
-        this.img_link = img_link;
-        this.recipe_link = recipe_link;
+    public Recipe(String image, String link, String title) {
+        this.image = image;
+        this.link = link;
         this.title = title;
     }
 
-    public String getImg_link() {
-        return img_link;
+    public String getImage() {
+        return image;
     }
 
-    public String getRecipe_link() {
-        return recipe_link;
-
+    public String getLink() {
+        return link;
     }
 
     public String getTitle() {
