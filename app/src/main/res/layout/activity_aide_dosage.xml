@@ -8,8 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/aide_dosage_ingredients"
-        android:layout_width="407dp"
-        android:layout_height="186dp"
+        android:layout_width="399dp"
+        android:layout_height="171dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -49,7 +49,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/quantity"
         android:layout_width="412dp"
-        android:layout_height="251dp"
+        android:layout_height="220dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +63,8 @@
         android:layout_width="89dp"
         android:layout_height="38dp"
         android:ems="10"
+        style="@style/Widget.AppCompat.EditText"
+        android:background="@color/grey"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,10 +74,10 @@
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="137dp"
-        android:layout_height="41dp"
+        android:layout_width="237dp"
+        android:layout_height="40dp"
         android:gravity="center"
-        android:text="Nb de personnes:"
+        android:text="Nombre de personnes :"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
