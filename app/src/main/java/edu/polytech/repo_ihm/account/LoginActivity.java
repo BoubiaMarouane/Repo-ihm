@@ -66,8 +66,6 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         dialog.setMessage(getString(R.string.login_incorrect));
                         final Timer t = new Timer();
-
-
                         t.schedule(new TimerTask() {
                             @Override
                             public void run() {

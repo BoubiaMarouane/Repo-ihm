@@ -1,6 +1,5 @@
 package edu.polytech.repo_ihm;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -13,6 +12,9 @@ import android.widget.Button;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.polytech.repo_ihm.account.AuthenticatorSingleton;
 import edu.polytech.repo_ihm.account.LoginActivity;
@@ -46,21 +48,31 @@ public class StartActivity extends AppCompatActivity {
         Log.d("pref", sharedPreferences.toString());
         if (sharedPreferences.contains("session_token")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Restoration de la session").setTitle("Connexion").setCancelable(false);
+            builder.setMessage(getString(R.string.session_restore)).setTitle("Connexion").setCancelable(false);
             AlertDialog dialog = builder.create();
             dialog.show();
-            @SuppressLint("ApplySharedPref") Thread login = new Thread(() -> {
+            runOnUiThread(() -> {
                 AuthenticatorSingleton.getInstance().setCurrentUser(sharedPreferences.getString("session_token", null));
                 try {
                     AuthenticatorSingleton.getInstance().setCurrentUserThread.join();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                startActivity(new Intent(StartActivity.this, MainActivity.class));
-                dialog.cancel();
-                finish();
+                if (AuthenticatorSingleton.getInstance().isUserLogged()) {
+                    startActivity(new Intent(StartActivity.this, MainActivity.class));
+                    finish();
+                } else {
+                    dialog.setMessage(getString(R.string.session_error));
+                    final Timer t = new Timer();
+                    t.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            dialog.dismiss();
+                            t.cancel();
+                        }
+                    }, 1500);
+                }
             });
-            login.start();
         }
 
 

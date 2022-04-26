@@ -59,4 +59,6 @@
     <string name="login_correct">Identifiants correcte, redirection vers le menu...</string>
     <string name="register_success">Vous êtes inscrit, redirection vers le menu...</string>
     <string name="loading">Chargement en cours, merci de patienter</string>
+    <string name="session_restore">Restoration de la session</string>
+    <string name="session_error">Session échoué, veuillez vous reconnecter</string>
 </resources>

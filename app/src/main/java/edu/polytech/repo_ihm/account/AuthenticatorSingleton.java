@@ -87,19 +87,21 @@ public class AuthenticatorSingleton {
                 e.printStackTrace();
             }
             JSONObject response = request.getRequestMessage().getRequestMessage();
-            try {
-                currentUser = new User(response.getString("firstname"),
-                        response.getString("name"),
-                        response.getString("email"),
-                        response.optString("address"),
-                        response.optString("additional_address"),
-                        response.optString("city"),
-                        response.optInt("postal"),
-                        response.optString("dob"));
+            if (response != null) {
+                try {
+                    currentUser = new User(response.getString("firstname"),
+                            response.getString("name"),
+                            response.getString("email"),
+                            response.optString("address"),
+                            response.optString("additional_address"),
+                            response.optString("city"),
+                            response.optInt("postal"),
+                            response.optString("dob"));
 
-                currentUser.setSessionToken(session_token);
-            } catch (JSONException e) {
-                e.printStackTrace();
+                    currentUser.setSessionToken(session_token);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
         this.setCurrentUserThread.start();
