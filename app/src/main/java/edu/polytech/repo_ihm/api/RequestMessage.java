@@ -24,6 +24,10 @@ public class RequestMessage {
                 '}';
     }
 
+    public String getStringMessage() {
+        return requestMessage;
+    }
+
     public JSONObject getRequestMessage() {
         if (!requestMessage.equals("error")) {
             try {

@@ -4,7 +4,6 @@ package edu.polytech.repo_ihm.fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,8 @@ import java.util.Locale;
 
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.datas.Inventory;
-import edu.polytech.repo_ihm.datas.InventoryList;
+import edu.polytech.repo_ihm.datas.InventoriesSingleton;
+import edu.polytech.repo_ihm.datas.InventoryFactory;
 import edu.polytech.repo_ihm.datas.Product;
 
 public class ProductListFragment extends Fragment implements AdapterView.OnItemClickListener {
@@ -82,8 +82,8 @@ public class ProductListFragment extends Fragment implements AdapterView.OnItemC
 
 
     //Impossible d'utiliser un attribut de Type Inventaire (fait crasher l'app) donc il faut utiliser le singleton à chaque fois...
-    private Inventory getIv(int id) {
-        return InventoryList.getInstance().getById(id);
+    private InventoryFactory getIv(int id) {
+        return InventoriesSingleton.getInstance().getById(id);
     }
 
     @Override
@@ -137,8 +137,8 @@ class ProductListAdapter extends BaseAdapter {
     }
 
 
-    private Inventory getIv(int id) {
-        return InventoryList.getInstance().getById(id);
+    private InventoryFactory getIv(int id) {
+        return InventoriesSingleton.getInstance().getById(id);
     }
 
 

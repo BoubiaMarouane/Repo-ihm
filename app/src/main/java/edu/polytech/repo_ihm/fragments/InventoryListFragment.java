@@ -4,27 +4,26 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
 import java.util.List;
+
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.activities.ItemViewModel;
 import edu.polytech.repo_ihm.activities.SelectedInventory;
-import edu.polytech.repo_ihm.datas.Inventory;
-import edu.polytech.repo_ihm.datas.InventoryList;
+import edu.polytech.repo_ihm.datas.InventoriesSingleton;
+import edu.polytech.repo_ihm.datas.InventoryFactory;
 
 
 public class InventoryListFragment extends Fragment {
-    private ItemViewModel viewModel;
 
     public InventoryListFragment() {
     }
@@ -34,9 +33,9 @@ public class InventoryListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inventory_list, container, false);
-        viewModel = new ViewModelProvider(requireActivity()).get(ItemViewModel.class);
+        ItemViewModel viewModel = new ViewModelProvider(requireActivity()).get(ItemViewModel.class);
         ListView lv = view.findViewById(R.id.lv_inventory);
-        InventoryListAdapter adapter = new InventoryListAdapter(getActivity(), InventoryList.getInstance().getInventories(),viewModel);
+        InventoryListAdapter adapter = new InventoryListAdapter(getActivity(), InventoriesSingleton.getInstance().getInventories(), viewModel);
         lv.setAdapter(adapter);
 
         return view;
@@ -46,14 +45,12 @@ public class InventoryListFragment extends Fragment {
 }
 
 class InventoryListAdapter extends BaseAdapter {
-    private final List<Inventory> inventories;
+    private final List<InventoryFactory> inventories;
     private final Context context;
-    private ItemViewModel viewModel;
+    private final ItemViewModel viewModel;
 
 
-
-
-    InventoryListAdapter(Context context, List<Inventory> inventories, ItemViewModel viewModel) {
+    InventoryListAdapter(Context context, List<InventoryFactory> inventories, ItemViewModel viewModel) {
         this.inventories = inventories;
         this.context = context;
         this.viewModel = viewModel;
@@ -84,7 +81,7 @@ class InventoryListAdapter extends BaseAdapter {
 
         TextView pName = view.findViewById(R.id.iv_name);
 
-        Inventory iv = inventories.get(i);
+        InventoryFactory iv = inventories.get(i);
         pName.setText(iv.getName());
 
 
@@ -100,8 +97,6 @@ class InventoryListAdapter extends BaseAdapter {
             this.viewModel.selectItem(iv);
 
         });
-
-
 
 
         view.setOnClickListener(view1 -> {

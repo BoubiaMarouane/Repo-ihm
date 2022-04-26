@@ -2,6 +2,8 @@ package edu.polytech.repo_ihm.api;
 
 import static edu.polytech.repo_ihm.StartActivity.API_HOST;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import java.io.BufferedInputStream;
@@ -12,6 +14,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -21,6 +24,7 @@ public class Request {
     private RequestMessage requestMessage;
 
     public Request(String uri, RequestType type, Object... parameters) {
+        Log.d("DEBUG", "Request Parameters: " + Arrays.toString(parameters));
         if (parameters.length % 2 != 0)
             throw new IllegalArgumentException("Arguments size not valid");
         requestThread = type == RequestType.GET ? getThread(uri) : otherThread(uri, type, parameters);

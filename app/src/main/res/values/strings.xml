@@ -61,4 +61,12 @@
     <string name="loading">Chargement en cours, merci de patienter</string>
     <string name="session_restore">Restoration de la session</string>
     <string name="session_error">Session échoué, veuillez vous reconnecter</string>
+    <string name="new_inventory">Envie d\'un nouvel inventaire?</string>
+    <string name="inventory_name">Nom de l\'inventaire</string>
+    <string name="share_inventory">Partager l\'inventaire?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="expiry">Valide jusqu\'au</string>
+    <string name="create_inventory">Créer l\'inventaire</string>
+    <string name="add">Ajouter</string>
 </resources>

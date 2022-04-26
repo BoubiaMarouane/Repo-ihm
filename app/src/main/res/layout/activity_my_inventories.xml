@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/my_inventories" />
 
-            <Button style="@style/Theme.Repoihm.BackButton"
+            <Button
+                style="@style/Theme.Repoihm.BackButton"
                 android:onClick="back" />
 
         </LinearLayout>
@@ -59,35 +60,33 @@
                     android:orientation="vertical">
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginTop="8dp"
-                        android:id="@+id/tv_envie_iv"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Envie d'un nouvel inventaire?"
-                        android:gravity="center_horizontal"
-                        android:layout_marginRight="10dp"
-                        android:layout_margin="5dp"/>
+                        android:orientation="horizontal">
 
-                    <Button
-                        android:layout_marginLeft="5dp"
-                        android:id="@+id/b_cancel_modif"
-                        android:layout_width="105dp"
-                        android:layout_height="37dp"
-                        android:layout_gravity="end"
-                        android:ems="10"
-                        android:text="annuler"
-                        android:visibility="invisible"
-                        android:layout_marginRight="-70dp"
-                        >
-                    </Button>
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_envie_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center_horizontal"
+                            android:text="Envie d'un nouvel inventaire?" />
+
+                        <Button
+                            android:id="@+id/b_cancel_modif"
+                            android:layout_width="105dp"
+                            android:layout_height="37dp"
+                            android:layout_gravity="end"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="-70dp"
+                            android:ems="10"
+                            android:text="annuler"
+                            android:visibility="invisible"></Button>
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/et_iv_name"
@@ -103,48 +102,45 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Partager l'inventaire?"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginRight="10dp"/>
-
-
-
-                    <RadioGroup
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/radioButton"
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Oui"
-                            android:onClick="setMailInputVisible"/>
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Partager l'inventaire?" />
 
-                        <RadioButton
-                            android:id="@+id/radioButton2"
-                            android:layout_width="match_parent"
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Non"
-                            android:onClick="setMailInputInvisible"
-                            android:checked="true"
-                            />
+                            android:orientation="horizontal">
 
-                    </RadioGroup>
+                            <RadioButton
+                                android:id="@+id/radioButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:onClick="setMailInputVisible"
+                                android:text="Oui" />
 
-                   </LinearLayout>
+                            <RadioButton
+                                android:id="@+id/radioButton2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:onClick="setMailInputInvisible"
+                                android:text="Non" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/et_mail_input"
-                        android:hint="mails des utilisateurs séparés par des ';'"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:visibility="invisible">
-                    </EditText>
+                        android:hint="mails des utilisateurs séparés par des ';'"
+                        android:visibility="invisible"></EditText>
 
 
                     <LinearLayout
@@ -153,13 +149,12 @@
                         android:orientation="horizontal">
 
 
-
                         <TextView
                             android:id="@+id/textView4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Valide jusqu'au" />
+                            android:text="@string/expiry" />
 
                         <EditText
                             android:id="@+id/et_editTextDate"
@@ -167,17 +162,17 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="date"
-                            android:hint="(ex 05/05/2022)"/>
+                            android:hint="(ex 05/05/2022)"
+                            android:inputType="date" />
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
 
             <Button
-                android:id="@+id/b_submit_iv"
+                android:id="@+id/createInventory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Créer l'inventaire" />
+                android:text="@string/create_inventory" />
 
         </LinearLayout>
 

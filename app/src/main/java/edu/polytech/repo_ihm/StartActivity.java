@@ -48,7 +48,7 @@ public class StartActivity extends AppCompatActivity {
         Log.d("pref", sharedPreferences.toString());
         if (sharedPreferences.contains("session_token")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage(getString(R.string.session_restore)).setTitle("Connexion").setCancelable(false);
+            builder.setMessage(getString(R.string.session_restore)).setTitle(R.string.login).setCancelable(false);
             AlertDialog dialog = builder.create();
             dialog.show();
             runOnUiThread(() -> {

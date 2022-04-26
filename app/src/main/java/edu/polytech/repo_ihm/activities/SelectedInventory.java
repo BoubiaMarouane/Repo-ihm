@@ -1,10 +1,7 @@
 package edu.polytech.repo_ihm.activities;
 
-import android.app.AlertDialog;
-import android.app.Instrumentation;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,7 +12,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.datas.Inventory;
-import edu.polytech.repo_ihm.datas.InventoryList;
+import edu.polytech.repo_ihm.datas.InventoriesSingleton;
+import edu.polytech.repo_ihm.datas.InventoryFactory;
 import edu.polytech.repo_ihm.datas.Product;
 import edu.polytech.repo_ihm.fragments.ProductListFragment;
 import edu.polytech.repo_ihm.mock.MockData;
@@ -61,8 +59,8 @@ public class SelectedInventory extends AppCompatActivity {
         generateFragListProducts();
     }
 
-    public Inventory getIv(int id) {
-        return InventoryList.getInstance().get(id);
+    public InventoryFactory getIv(int id) {
+        return InventoriesSingleton.getInstance().getById(id);
     }
 
 
