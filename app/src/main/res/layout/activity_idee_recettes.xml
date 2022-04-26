@@ -6,67 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".activities.ideeRecettes.IdeeRecettesActivity">
 
-    <LinearLayout android:gravity="center_horizontal"
-        android:id="@+id/linearAndroidLarge"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical" >
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ingredients_recycler_view"
+        android:layout_width="411dp"
+        android:layout_height="340dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <LinearLayout android:gravity="start"
-            android:id="@+id/linearFrame15"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent" android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txtMarketPlace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="Idée De Recettes"
-                android:textAllCaps="true"
-                android:textSize="20dp" />
-
-            <Button
-                android:id="@+id/backButton"
-                android:layout_width="wrap_content"
-                android:layout_height="37dp"
-                android:onClick="returnHomePage"
-                android:text="Retour" />
-
-            <LinearLayout android:gravity="start"
-                android:id="@+id/linearBack"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_width="match_parent" android:orientation="horizontal">
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="304dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="150dp"
-            android:textSize="15dp"
-            android:text="Appuyez sur le bouton pour avoir une recette au hasard" />
-
-        <TextView
-            android:id="@+id/tvReceiptName"
-            android:layout_width="95dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="40dp"
-            android:textSize="20dp"
-            android:text="" />
-        <Button
-            android:id="@+id/bGetReceipt"
-            android:layout_width="146dp"
-            android:layout_marginTop="80dp"
-            android:layout_height="wrap_content"
-            android:text="Get Receipt" />
-
-
-    </LinearLayout>
-
+    <Button
+        android:id="@+id/button_recipes"
+        android:layout_width="176dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="145dp"
+        android:text="Trouve-moi une recette"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingredients_recycler_view"
+        app:layout_constraintVertical_bias="0.059" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,51 +3,50 @@ package edu.polytech.repo_ihm.activities.ideeRecettes;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class IdeeRecettesModel {
+import edu.polytech.repo_ihm.R;
+import edu.polytech.repo_ihm.datas.Recipe;
+import edu.polytech.repo_ihm.firebase.DatabaseInstance;
 
-    // utiliser API pour recette
-    String[] receiptsList = {"Recette1", "Recette2", "Recette3", "Recette4"};
+public class IdeeRecettesModel {
 
     private IdeeRecettesController controller;
 
-    public IdeeRecettesModel(IdeeRecettesController controller){
+    public IdeeRecettesModel(IdeeRecettesController controller) {
         this.controller = controller;
     }
 
-    public void suggestReceipt(){
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-        final String[] receiptName = {""};
-        //before executing background task
-
-        executor.execute(new Runnable() {
+    public void suggestRecipes(String ingredient) {
+        String recipe_id = String.valueOf(new Random().nextInt(3));
+        DatabaseReference database = DatabaseInstance.getInstance().getReference();
+        DatabaseReference pasta = database.child("recipes").child("byIngredient").child(ingredient).child("results").child(recipe_id);
+        pasta.addValueEventListener(new ValueEventListener() {
             @Override
-            public void run() {
-                //background work here
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                System.out.println(snapshot);
+                Recipe displayedRecipe = snapshot.getValue(Recipe.class);
+                controller.onReceive(displayedRecipe);
+            }
 
-                try {
-                    Thread.sleep(1000);
-                }catch (InterruptedException e){
-                    e.printStackTrace();
-                }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                receiptName[0] = receiptsList[new Random().nextInt(receiptsList.length)];
-
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        //
-                        controller.onReceiptSuggested(receiptName[0]);
-                    }
-                });
             }
         });
     }
-
-
 }
