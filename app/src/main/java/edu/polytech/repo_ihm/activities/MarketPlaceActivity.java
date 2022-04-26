@@ -37,12 +37,9 @@ public class MarketPlaceActivity extends FragmentActivity {
         });
 
         buttonBuyProduct = findViewById(R.id.btnAcheterDespro);
-        buttonBuyProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intentToBuyProduct=new Intent(MarketPlaceActivity.this , BuyProductActivity.class);
-                startActivity(intentToBuyProduct);
-            }
+        buttonBuyProduct.setOnClickListener(v -> {
+            intentToBuyProduct = new Intent(MarketPlaceActivity.this , BuyProductActivity.class);
+            startActivity(intentToBuyProduct);
         });
 
     }

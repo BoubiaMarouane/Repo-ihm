@@ -1,7 +1,10 @@
 package edu.polytech.repo_ihm.activities;
 
+import android.app.AlertDialog;
+import android.app.Instrumentation;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,13 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import java.util.ArrayList;
-
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.datas.Inventory;
 import edu.polytech.repo_ihm.datas.InventoryList;
 import edu.polytech.repo_ihm.datas.Product;
 import edu.polytech.repo_ihm.fragments.ProductListFragment;
+import edu.polytech.repo_ihm.mock.MockData;
 
 public class SelectedInventory extends AppCompatActivity {
 
@@ -27,16 +29,12 @@ public class SelectedInventory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_inventory);
         inventoryId = getIntent().getIntExtra("IV_ID", 0);
-        ArrayList<Product> mockProducts = new ArrayList<>();
-        mockProducts.add(new Product("riz", 1, R.drawable.riz, "10/2/2020"));
-        mockProducts.add(new Product("mayo", 1, R.drawable.mayo, "10/2/2020"));
-        mockProducts.add(new Product("riz", 1, R.drawable.riz, "10/2/2020"));
-        mockProducts.add(new Product("mayo", 1, R.drawable.mayo, "10/2/2020"));
-        getIv(inventoryId).setProducts(mockProducts);
+        getIv(inventoryId).setProducts(MockData.products);
         generateFragListProducts();
-
         TextView title = findViewById(R.id.title);
         title.setText(getIv(inventoryId).getName());
+
+        //findViewById(R.id.b_scan).setOnClickListener(v -> scanProduct()); marche pas bien
 
 
     }
@@ -67,8 +65,16 @@ public class SelectedInventory extends AppCompatActivity {
         return InventoryList.getInstance().get(id);
     }
 
+
+
     public void back(View view) {
         Intent intent = new Intent(SelectedInventory.this, MyInventoriesActivity.class);
         startActivity(intent);
+    }
+
+    public void scanProduct() {
+
+
+
     }
 }

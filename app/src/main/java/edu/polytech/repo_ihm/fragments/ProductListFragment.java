@@ -1,8 +1,10 @@
 package edu.polytech.repo_ihm.fragments;
 
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,9 +40,11 @@ public class ProductListFragment extends Fragment implements AdapterView.OnItemC
     }
 
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             inventoryId = getArguments().getInt("IV_ID");
             pName = getActivity().findViewById(R.id.et_name_product);
@@ -49,18 +53,37 @@ public class ProductListFragment extends Fragment implements AdapterView.OnItemC
             bSubmit = getActivity().findViewById(R.id.b_submit);
         }
 
+
+       /* pName = getActivity().findViewById(R.id.et_name_product);
+        pQty = getActivity().findViewById(R.id.et_product_qty);
+        pDate = getActivity().findViewById(R.id.et_product_date);
+        bSubmit = getActivity().findViewById(R.id.b_submit);*/
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_product_list, container, false);
+
+       /* pName = v.findViewById(R.id.et_name_product);
+        pQty = v.findViewById(R.id.et_product_qty);
+        pDate = v.findViewById(R.id.et_product_date);
+        bSubmit = v.findViewById(R.id.b_submit);*/
         ListView lv = v.findViewById(R.id.lv_product_list);
         ProductListAdapter pAdapter = new ProductListAdapter(getActivity(), getIv(inventoryId).getProducts());
         lv.setAdapter(pAdapter);
         lv.setOnItemClickListener(this);
         return v;
+    }
+
+
+    //Impossible d'utiliser un attribut de Type Inventaire (fait crasher l'app) donc il faut utiliser le singleton à chaque fois...
+    private Inventory getIv(int id) {
+        return InventoryList.getInstance().getById(id);
     }
 
     @Override
@@ -72,16 +95,10 @@ public class ProductListFragment extends Fragment implements AdapterView.OnItemC
             pDate.setText(String.format("%s", p.getDateP()));
             bSubmit.setText(String.format("MODIFIER PRODUIT %s", p.getName().toUpperCase(Locale.ROOT)));
         }
-
-
-    }
-
-
-    //Impossible d'utiliser un attribut de Type Inventaire (fait crasher l'app) donc il faut utiliser le singleton à chaque fois...
-    private Inventory getIv(int id) {
-        return InventoryList.getInstance().getById(id);
     }
 }
+
+
 
 
 class ProductListAdapter extends BaseAdapter {
@@ -118,6 +135,13 @@ class ProductListAdapter extends BaseAdapter {
         pName.setText(p.getName());
         return view;
     }
+
+
+    private Inventory getIv(int id) {
+        return InventoryList.getInstance().getById(id);
+    }
+
+
 }
 
 

@@ -48,6 +48,13 @@
 
                 />
 
+    <View
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#26000000"
+        />
+
 
             <View
                 android:id="@+id/divider"
@@ -71,7 +78,8 @@
                 android:id="@+id/b_scan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/scanner" />
+                android:text="@string/scanner"
+                />
 
             <EditText
                 android:id="@+id/et_name_product"

@@ -59,26 +59,43 @@
                     android:orientation="vertical">
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
                     <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/tv_envie_iv"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Envie d'un nouvel inventaire?"
-                        android:gravity="center_horizontal"/>
+                        android:gravity="center_horizontal"
+                        android:layout_marginRight="10dp"
+                        android:layout_margin="5dp"/>
+
+                    <Button
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/b_cancel_modif"
+                        android:layout_width="105dp"
+                        android:layout_height="37dp"
+                        android:layout_gravity="end"
+                        android:ems="10"
+                        android:text="annuler"
+                        android:visibility="invisible"
+                        android:layout_marginRight="-70dp"
+                        >
+                    </Button>
+                </LinearLayout>
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/et_iv_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="Nom de l'inventaire"
                         android:inputType="textPersonName" />
-
-                    <Button
-                        android:id="@+id/button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Ajouter" />
 
 
                     <LinearLayout
@@ -105,22 +122,37 @@
                             android:id="@+id/radioButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Oui" />
+                            android:text="Oui"
+                            android:onClick="setMailInputVisible"/>
 
                         <RadioButton
                             android:id="@+id/radioButton2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Non" />
+                            android:text="Non"
+                            android:onClick="setMailInputInvisible"
+                            android:checked="true"
+                            />
 
                     </RadioGroup>
 
                    </LinearLayout>
 
+                    <EditText
+                        android:id="@+id/et_mail_input"
+                        android:hint="mails des utilisateurs séparés par des ';'"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:visibility="invisible">
+                    </EditText>
+
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
+
 
                         <TextView
                             android:id="@+id/textView4"
@@ -130,18 +162,19 @@
                             android:text="Valide jusqu'au" />
 
                         <EditText
-                            android:id="@+id/editTextDate"
+                            android:id="@+id/et_editTextDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="date" />
+                            android:inputType="date"
+                            android:hint="(ex 05/05/2022)"/>
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/b_submit_iv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Créer l'inventaire" />
