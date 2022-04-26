@@ -132,4 +132,9 @@ public class AideDosageActivity extends AppCompatActivity {
         String response = Double.toString(quantity.getDouble("amount")) + quantity.getString("unit");
         return response;
     }
+
+    public void back(View view) {
+        Intent intent = new Intent(AideDosageActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

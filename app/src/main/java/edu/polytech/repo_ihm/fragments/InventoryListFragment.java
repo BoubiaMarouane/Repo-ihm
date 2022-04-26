@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,20 +85,20 @@ class InventoryListAdapter extends BaseAdapter {
 
         TextView pName = view.findViewById(R.id.iv_name);
 
-        InventoryFactory iv = inventories.get(i);
-        pName.setText(iv.getName());
+        InventoryFactory inventory = inventories.get(i);
+        pName.setText(inventory.getName());
 
 
         //Delete
         view.findViewById(R.id.ib_deleteButton).setOnClickListener(v -> {
-            Request request = new Request("inventory/delete", Request.RequestType.DELETE, "token", StartActivity.API_KEY, "session_token", AuthenticatorSingleton.getInstance().getCurrentUser().getSessionToken(), "id", iv.getId());
+            Request request = new Request("inventory/delete", Request.RequestType.DELETE, "token", StartActivity.API_KEY, "session_token", AuthenticatorSingleton.getInstance().getCurrentUser().getSessionToken(), "id", inventory.getId());
             try {
                 request.getRequestThread().join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             if (request.getRequestMessage().getRequestCode() == 200) {
-                this.inventories.remove(iv);
+                this.inventories.remove(inventory);
                 this.notifyDataSetChanged();
             }
         });
@@ -105,14 +106,13 @@ class InventoryListAdapter extends BaseAdapter {
 
         //Modif
         view.findViewById(R.id.ib_editButton).setOnClickListener(v -> {
-            this.viewModel.selectItem(iv);
+            this.viewModel.selectItem(inventory);
 
         });
 
-
         view.setOnClickListener(view1 -> {
             Intent intent = new Intent(context, SelectedInventory.class);
-            intent.putExtra("IV_ID", iv.getId());
+            intent.putExtra("IV_ID", inventory.getId());
             context.startActivity(intent);
         });
         return view;

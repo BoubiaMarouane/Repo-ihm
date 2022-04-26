@@ -16,8 +16,6 @@ public class InventoriesSingleton extends ArrayList<InventoryFactory> {
     private static InventoriesSingleton instance = null;
 
     private InventoriesSingleton() {
-
-        reload();
     }
 
     public static InventoriesSingleton getInstance() {

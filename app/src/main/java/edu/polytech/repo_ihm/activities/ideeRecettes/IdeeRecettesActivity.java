@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import edu.polytech.repo_ihm.R;
+import edu.polytech.repo_ihm.activities.AideDosageActivity;
 import edu.polytech.repo_ihm.activities.MainActivity;
 import edu.polytech.repo_ihm.api.Requester;
 
@@ -87,7 +88,8 @@ public class IdeeRecettesActivity extends AppCompatActivity {
     }
 
 
-
-
-
+    public void back(View view) {
+        Intent intent = new Intent(IdeeRecettesActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

@@ -4,6 +4,7 @@ package edu.polytech.repo_ihm.fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,6 @@ import java.util.List;
 import java.util.Locale;
 
 import edu.polytech.repo_ihm.R;
-import edu.polytech.repo_ihm.datas.Inventory;
 import edu.polytech.repo_ihm.datas.InventoriesSingleton;
 import edu.polytech.repo_ihm.datas.InventoryFactory;
 import edu.polytech.repo_ihm.datas.Product;
@@ -33,20 +33,18 @@ public class ProductListFragment extends Fragment implements AdapterView.OnItemC
     private EditText pDate;
     private Button bSubmit;
 
+    private InventoryFactory currentInventory = null;
 
     public ProductListFragment() {
         // Required empty public constructor
-
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments() != null) {
-            inventoryId = getArguments().getInt("IV_ID");
+        if (getArguments() != null && getArguments().containsKey("IV_ID")) {
+            currentInventory = InventoriesSingleton.getInstance().getById(getArguments().getInt("IV_ID"));
             pName = getActivity().findViewById(R.id.et_name_product);
             pQty = getActivity().findViewById(R.id.et_product_qty);
             pDate = getActivity().findViewById(R.id.et_product_date);
@@ -74,22 +72,22 @@ public class ProductListFragment extends Fragment implements AdapterView.OnItemC
         pDate = v.findViewById(R.id.et_product_date);
         bSubmit = v.findViewById(R.id.b_submit);*/
         ListView lv = v.findViewById(R.id.lv_product_list);
-        ProductListAdapter pAdapter = new ProductListAdapter(getActivity(), getIv(inventoryId).getProducts());
-        lv.setAdapter(pAdapter);
-        lv.setOnItemClickListener(this);
-        return v;
+        if(currentInventory != null) {
+            ProductListAdapter pAdapter = new ProductListAdapter(getActivity(), currentInventory.getProducts());
+            lv.setAdapter(pAdapter);
+            lv.setOnItemClickListener(this);
+            return v;
+        } else {
+            return null;
+        }
+
     }
 
-
-    //Impossible d'utiliser un attribut de Type Inventaire (fait crasher l'app) donc il faut utiliser le singleton à chaque fois...
-    private InventoryFactory getIv(int id) {
-        return InventoriesSingleton.getInstance().getById(id);
-    }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Product p = getIv(inventoryId).getProducts().get(i);
-        if (getIv(inventoryId).containProduct(p.getName())) {
+        Product p = currentInventory.getProducts().get(i);
+        if (currentInventory.containProduct(p.getName())) {
             pName.setText(String.format("%s", p.getName()));
             pQty.setText(String.format("%s", p.getQuantity()));
             pDate.setText(String.format("%s", p.getDateP()));
@@ -97,8 +95,6 @@ public class ProductListFragment extends Fragment implements AdapterView.OnItemC
         }
     }
 }
-
-
 
 
 class ProductListAdapter extends BaseAdapter {

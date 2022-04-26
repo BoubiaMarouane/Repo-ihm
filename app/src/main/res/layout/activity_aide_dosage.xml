@@ -2,88 +2,108 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Theme.Repoihm.DefaultPadding"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.AideDosageActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/aide_dosage_ingredients"
-        android:layout_width="399dp"
-        android:layout_height="171dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/aide_au_dosage_title"
-        android:layout_width="380dp"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:text="Aide au Dosage"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+            <TextView
+                android:id="@+id/title"
+                style="@style/Theme.Repoihm.TitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Aide au Dosage" />
 
-    <Button
-        android:id="@+id/quantity_btn"
-        android:layout_width="180dp"
-        android:layout_height="59dp"
-        android:text="Calculer quantités"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.614" />
+            <Button
+                style="@style/Theme.Repoihm.BackButton"
+                android:onClick="back" />
+        </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/quantity"
-        android:layout_width="412dp"
-        android:layout_height="220dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
-        android:id="@+id/nb_personnes"
-        android:layout_width="89dp"
-        android:layout_height="38dp"
-        android:ems="10"
-        style="@style/Widget.AppCompat.EditText"
-        android:background="@color/grey"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/aide_dosage_ingredients"
+            android:layout_width="399dp"
+            android:layout_height="171dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.15">
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="237dp"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:text="Veuillez entrer le Nombre de personnes :"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418" />
+        </androidx.recyclerview.widget.RecyclerView>
 
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="237dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="Veuillez entrer le Nombre de personnes :"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.418" />
+
+        <EditText
+            android:id="@+id/nb_personnes"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="89dp"
+            android:layout_height="38dp"
+            android:background="@color/grey"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.499" />
+
+        <Button
+            android:id="@+id/quantity_btn"
+            android:layout_width="180dp"
+            android:layout_height="59dp"
+            android:text="Calculer quantités"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.614" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/quantity"
+            android:layout_width="412dp"
+            android:layout_height="220dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/footer"
+            android:name="edu.polytech.repo_ihm.fragments.AppFooterFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_app_footer">
+
+        </androidx.fragment.app.FragmentContainerView>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

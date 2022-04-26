@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="16sp"
             android:layout_weight="1" />
-
+        <!--
         <Button
             android:id="@+id/btnAlertePeremption"
             android:layout_width="match_parent"
@@ -113,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="16sp"
             android:layout_weight="1" />
-
+        -->
         <Button
             android:id="@+id/logoutButton"
             android:layout_width="wrap_content"

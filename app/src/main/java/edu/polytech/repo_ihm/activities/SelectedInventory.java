@@ -27,7 +27,6 @@ public class SelectedInventory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_inventory);
         inventoryId = getIntent().getIntExtra("IV_ID", 0);
-        getIv(inventoryId).setProducts(MockData.products);
         generateFragListProducts();
         TextView title = findViewById(R.id.title);
         title.setText(getIv(inventoryId).getName());
@@ -54,7 +53,7 @@ public class SelectedInventory extends AppCompatActivity {
         String pName = ((EditText) findViewById(R.id.et_name_product)).getText().toString();
         String pQty = ((EditText) findViewById(R.id.et_product_qty)).getText().toString();
         String pDate = ((EditText) findViewById(R.id.et_product_date)).getText().toString();
-        Product newP = new Product(pName, Integer.parseInt(pQty), R.drawable.ic_edit, pDate);
+        Product newP = new Product(pName, Integer.parseInt(pQty), pDate);
         getIv(inventoryId).addProduct(newP);
         generateFragListProducts();
     }

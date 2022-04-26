@@ -6,13 +6,11 @@ public class Product implements Serializable {
 
     private String name;
     private int quantity;
-    private int img;
     private String dateP;
 
-    public Product(String name, int quantity, int img, String dateP) {
+    public Product(String name, int quantity, String dateP) {
         this.name = name;
         this.quantity = quantity;
-        this.img = img;
         this.dateP = dateP;
     }
 
@@ -32,17 +30,11 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-    public int getImg() {
-        return this.img;
-    }
 
     public String getDateP() {
         return dateP;
     }
 
-    public void setImg(int img) {
-        this.img = img;
-    }
 
     public void setDateP(String dateP) {
         this.dateP = dateP;
@@ -53,7 +45,6 @@ public class Product implements Serializable {
         return "Product{" +
                 "name='" + name + '\'' +
                 ", quantity=" + quantity +
-                ", img=" + img +
                 ", dateP='" + dateP + '\'' +
                 '}';
     }

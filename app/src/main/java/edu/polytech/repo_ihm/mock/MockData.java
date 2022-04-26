@@ -13,10 +13,10 @@ public class MockData {
     public static List<String> mails = Arrays.asList("user@gmail.com");
 
     public static List<Product> products = Arrays.asList(
-            new Product("riz", 1, R.drawable.riz, "10/2/2020"),
-            new Product("mayo", 1, R.drawable.mayo, "10/2/2020"),
-            new Product("riz", 1, R.drawable.riz, "10/2/2020"),
-            new Product("mayo", 1, R.drawable.mayo, "10/2/2020")
+            new Product("riz", 1, "10/2/2020"),
+            new Product("mayo", 1, "10/2/2020"),
+            new Product("riz", 1, "10/2/2020"),
+            new Product("mayo", 1, "10/2/2020")
     );
 
 }
