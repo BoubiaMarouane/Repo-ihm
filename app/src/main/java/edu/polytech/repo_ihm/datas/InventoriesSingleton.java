@@ -17,6 +17,17 @@ public class InventoriesSingleton extends ArrayList<InventoryFactory> {
 
     private InventoriesSingleton() {
 
+        reload();
+    }
+
+    public static InventoriesSingleton getInstance() {
+        if (instance == null)
+            instance = new InventoriesSingleton();
+        return instance;
+    }
+
+    private void reload() {
+        clear();
         Request request = new Request("inventory", Request.RequestType.POST, "token", StartActivity.API_KEY, "session_token", AuthenticatorSingleton.getInstance().getCurrentUser().getSessionToken());
         try {
             request.getRequestThread().join();
@@ -32,14 +43,8 @@ public class InventoriesSingleton extends ArrayList<InventoryFactory> {
         }
     }
 
-
-    public static InventoriesSingleton getInstance() {
-        if (instance == null)
-            instance = new InventoriesSingleton();
-        return instance;
-    }
-
     public List<InventoryFactory> getInventories() {
+        reload();
         return this;
     }
 
