@@ -19,10 +19,10 @@
 
     <Button
         android:id="@+id/button_recipes"
-        android:layout_width="135dp"
-        android:layout_height="80dp"
+        android:layout_width="176dp"
+        android:layout_height="79dp"
         android:layout_marginTop="145dp"
-        android:text="Voir Recettes"
+        android:text="Trouve-moi une recette"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

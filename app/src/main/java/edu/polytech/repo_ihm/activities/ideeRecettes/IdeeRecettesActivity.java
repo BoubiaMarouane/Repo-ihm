@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckedTextView;
@@ -22,10 +23,10 @@ import java.util.concurrent.Executors;
 
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.activities.MainActivity;
+import edu.polytech.repo_ihm.api.Requester;
 
 public class IdeeRecettesActivity extends AppCompatActivity {
 
-//    String[] ingredients = {"Recette1", "Recette2", "Recette3", "Recette4"};
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
     private RecyclerView recyclerView;
     private IngredientAdapter.RecyclerViewClickListener listener;
