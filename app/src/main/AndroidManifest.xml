@@ -71,6 +71,9 @@
         <meta-data
             android:name="API_KEY"
             android:value="Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==" />
+        <meta-data
+            android:name="API_HOST"
+            android:value="http://d8d8-109-210-108-136.eu.ngrok.io/" />
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package edu.polytech.repo_ihm.account;
 
+import edu.polytech.repo_ihm.api.Request;
 import edu.polytech.repo_ihm.api.RequestMessage;
 
 public class AuthenticatorSingleton {
@@ -27,18 +28,21 @@ public class AuthenticatorSingleton {
     }
 
     public void logIn(String email, String password) {
-        this.logInThread = new Thread(() -> lastRM = new RequestMessage(200, "{\"session_token\": \"1234\"}"));
+        this.logInThread = new Thread(() -> {
+            Request request = new Request("user/login", Request.RequestType.POST, "token", "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==", "email", email, "password", password);
+            try {
+                request.getRequestThread().join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            lastRM = request.getRequestMessage();
+        });
         this.logInThread.start();
     }
 
     public void register(String firstname, String name, String email, String password, String confirmPassword) {
         this.registerThread = new Thread(() -> lastRM = new RequestMessage(200, "{\"session_token\": \"1234\"}"));
         this.registerThread.start();
-    }
-
-    public void setCurrentUser(String session_token) {
-        this.setCurrentUserThread = new Thread(() -> currentUser = new User(session_token));
-        this.setCurrentUserThread.start();
     }
 
     public void logOut(String session_token) {
@@ -51,6 +55,11 @@ public class AuthenticatorSingleton {
 
     public User getCurrentUser() {
         return currentUser;
+    }
+
+    public void setCurrentUser(String session_token) {
+        this.setCurrentUserThread = new Thread(() -> currentUser = new User(session_token));
+        this.setCurrentUserThread.start();
     }
 
     public boolean isUserLogged() {

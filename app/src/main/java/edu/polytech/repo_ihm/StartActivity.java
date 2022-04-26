@@ -18,10 +18,9 @@ import edu.polytech.repo_ihm.account.RegisterActivity;
 import edu.polytech.repo_ihm.activities.MainActivity;
 
 public class StartActivity extends AppCompatActivity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         AuthenticatorSingleton.getInstance();
@@ -31,7 +30,7 @@ public class StartActivity extends AppCompatActivity {
         Log.d("pref", sharedPreferences.toString());
         if (sharedPreferences.contains("session_token")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Restauration de la session").setTitle("Connexion").setCancelable(false);
+            builder.setMessage("Restoration de la session").setTitle("Connexion").setCancelable(false);
             AlertDialog dialog = builder.create();
             dialog.show();
             @SuppressLint("ApplySharedPref") Thread login = new Thread(() -> {

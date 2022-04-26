@@ -12,6 +12,10 @@ public class RequestMessage {
         this.requestMessage = requestMessage;
     }
 
+    public int getRequestCode() {
+        return requestCode;
+    }
+
     @Override
     public String toString() {
         return "RequestMessage{" +
