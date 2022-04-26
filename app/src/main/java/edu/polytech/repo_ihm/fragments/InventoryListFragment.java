@@ -17,8 +17,11 @@ import androidx.lifecycle.ViewModelProvider;
 import java.util.List;
 
 import edu.polytech.repo_ihm.R;
+import edu.polytech.repo_ihm.StartActivity;
+import edu.polytech.repo_ihm.account.AuthenticatorSingleton;
 import edu.polytech.repo_ihm.activities.ItemViewModel;
 import edu.polytech.repo_ihm.activities.SelectedInventory;
+import edu.polytech.repo_ihm.api.Request;
 import edu.polytech.repo_ihm.datas.InventoriesSingleton;
 import edu.polytech.repo_ihm.datas.InventoryFactory;
 
@@ -87,8 +90,16 @@ class InventoryListAdapter extends BaseAdapter {
 
         //Delete
         view.findViewById(R.id.ib_deleteButton).setOnClickListener(v -> {
-            this.inventories.remove(iv);
-            this.notifyDataSetChanged();
+            Request request = new Request("inventory/delete", Request.RequestType.DELETE, "token", StartActivity.API_KEY, "session_token", AuthenticatorSingleton.getInstance().getCurrentUser().getSessionToken(), "id", iv.getId());
+            try {
+                request.getRequestThread().join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (request.getRequestMessage().getRequestCode() == 200) {
+                this.inventories.remove(iv);
+                this.notifyDataSetChanged();
+            }
         });
 
 
