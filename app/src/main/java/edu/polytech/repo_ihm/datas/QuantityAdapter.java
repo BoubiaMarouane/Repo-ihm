@@ -15,9 +15,13 @@ import edu.polytech.repo_ihm.R;
 public class QuantityAdapter extends RecyclerView.Adapter<QuantityAdapter.ViewHolder> {
 
     private ArrayList<Ingredients> ingredients;
+    private ArrayList<Boolean> ingredientIsSelected;
+    private ArrayList<String> quantityPerIngredient;
 
-    public QuantityAdapter(ArrayList<Ingredients> ingredients) {
+    public QuantityAdapter(ArrayList<Ingredients> ingredients, ArrayList<Boolean> ingredientIsSelected, ArrayList<String> quantityPerIngredient) {
         this.ingredients = ingredients;
+        this.ingredientIsSelected = ingredientIsSelected;
+        this.quantityPerIngredient = quantityPerIngredient;
     }
 
     @NonNull
@@ -30,7 +34,13 @@ public class QuantityAdapter extends RecyclerView.Adapter<QuantityAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String name = ingredients.get(position).french();
+        String quantity = quantityPerIngredient.get(position);
         holder.name.setText(name);
+        holder.quantity.setText(quantity);
+        if (ingredientIsSelected.get(position)) {
+            holder.name.setVisibility(View.VISIBLE);
+            holder.quantity.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
