@@ -8,14 +8,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import edu.polytech.repo_ihm.R;
+import edu.polytech.repo_ihm.api.Requester;
 import edu.polytech.repo_ihm.datas.Ingredients;
 import edu.polytech.repo_ihm.datas.IngredientsAdapter;
 import edu.polytech.repo_ihm.datas.QuantityAdapter;
@@ -23,6 +28,9 @@ import edu.polytech.repo_ihm.datas.QuantityAdapter;
 public class AideDosageActivity extends AppCompatActivity {
 
     private ArrayList<Ingredients> ingredients = new ArrayList<>();
+    private ArrayList<Boolean> ingredientIsSelected = new ArrayList<>();
+    private ArrayList<String> quantityPerIngredient = new ArrayList<>();
+
     private RecyclerView ingredientsView;
     private RecyclerView quantityView;
     private Button show_quantity_button;
@@ -36,17 +44,38 @@ public class AideDosageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
         setContentView(R.layout.activity_aide_dosage);
         ingredientsView = findViewById(R.id.aide_dosage_ingredients);
         quantityView = findViewById(R.id.quantity);
         nbPersonnes = findViewById(R.id.nb_personnes);
         show_quantity_button = findViewById(R.id.quantity_btn);
+        nbPersonnes.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                ingredientsView.setVisibility(View.VISIBLE);
+                show_quantity_button.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         show_quantity_button.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
+                System.out.println(nbOfIngredients);
+                quantityView.setAdapter(new QuantityAdapter(ingredients, ingredientIsSelected, quantityPerIngredient));
                 quantityView.setVisibility(View.VISIBLE);
             }
         });
@@ -67,8 +96,6 @@ public class AideDosageActivity extends AppCompatActivity {
         ingredientsView.setItemAnimator(new DefaultItemAnimator());
         quantityView.setItemAnimator(new DefaultItemAnimator());
         ingredientsView.setAdapter(ingredientsAdapter);
-        quantityView.setAdapter(new QuantityAdapter(ingredients));
-
     }
 
     private void setOnClickListener() {
@@ -76,7 +103,13 @@ public class AideDosageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v, int position) {
                 nbOfIngredients++;
-
+                ingredientIsSelected.set(position, true);
+                int id = ingredients.get(position).id();
+                try {
+                    quantityPerIngredient.set(position, calculateQuantity(id));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 // set up listener here
             }
         };
@@ -84,10 +117,15 @@ public class AideDosageActivity extends AppCompatActivity {
 
     private void setIngredients() {
         ingredients.addAll(Arrays.asList(Ingredients.values()));
+        for (Ingredients i : Ingredients.values()) {
+            ingredientIsSelected.add(false);
+            quantityPerIngredient.add("");
+        }
     }
 
-    private void calculateQuantity() {
-        int nb = Integer.parseInt(nbPersonnes.getText().toString());
-        int totalCal = BASE_CAL * nb;
+    private String calculateQuantity(int ingredientID) throws Exception {
+        JSONObject quantity = Requester.getIngredientQuantity(ingredientID,BASE_CAL);
+        String response = Double.toString(quantity.getDouble("amount")) + quantity.getString("unit");
+        return response;
     }
 }

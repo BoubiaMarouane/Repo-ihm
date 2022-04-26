@@ -34,8 +34,8 @@ public class IdeeRecettesModel {
     public void suggestRecipes(String ingredient) {
         String recipe_id = String.valueOf(new Random().nextInt(3));
         DatabaseReference database = DatabaseInstance.getInstance().getReference();
-        DatabaseReference pasta = database.child("recipes").child("byIngredient").child(ingredient).child("results").child(recipe_id);
-        pasta.addValueEventListener(new ValueEventListener() {
+        DatabaseReference ingredientRef = database.child("recipes").child("byIngredient").child(ingredient).child("results").child(recipe_id);
+        ingredientRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 System.out.println(snapshot);
@@ -45,7 +45,7 @@ public class IdeeRecettesModel {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                System.out.println(error);
             }
         });
     }

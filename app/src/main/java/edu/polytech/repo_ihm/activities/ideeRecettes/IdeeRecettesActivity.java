@@ -40,7 +40,7 @@ public class IdeeRecettesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idee_recettes);
-        button_showRecipes = (Button) findViewById(R.id.button_recipes);
+        button_showRecipes = findViewById(R.id.button_recipes);
         controller = new IdeeRecettesController(this);
         button_showRecipes.setOnClickListener(new View.OnClickListener(){
             @Override
