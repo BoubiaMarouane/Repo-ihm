@@ -3,6 +3,8 @@ package edu.polytech.repo_ihm;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,8 +20,22 @@ import edu.polytech.repo_ihm.account.RegisterActivity;
 import edu.polytech.repo_ihm.activities.MainActivity;
 
 public class StartActivity extends AppCompatActivity {
+    public static String API_HOST;
+    public static String API_KEY;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        ApplicationInfo app = null;
+        try {
+            app = this.getPackageManager().getApplicationInfo(this.getPackageName(), PackageManager.GET_META_DATA);
+            Bundle bundle = app.metaData;
+            API_HOST = bundle.getString("API_HOST");
+            API_KEY = bundle.getString("API_KEY");
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);

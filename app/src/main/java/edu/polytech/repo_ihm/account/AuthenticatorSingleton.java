@@ -1,5 +1,11 @@
 package edu.polytech.repo_ihm.account;
 
+import static edu.polytech.repo_ihm.api.Request.RequestType.POST;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import edu.polytech.repo_ihm.StartActivity;
 import edu.polytech.repo_ihm.api.Request;
 import edu.polytech.repo_ihm.api.RequestMessage;
 
@@ -29,7 +35,7 @@ public class AuthenticatorSingleton {
 
     public void logIn(String email, String password) {
         this.logInThread = new Thread(() -> {
-            Request request = new Request("user/login", Request.RequestType.POST, "token", "Y2VjaSBlc3QgdW5lIHBhdGF0ZSBkb3VjZQ==", "email", email, "password", password);
+            Request request = new Request("user/login", POST, "token", StartActivity.API_KEY, "email", email, "password", password);
             try {
                 request.getRequestThread().join();
             } catch (InterruptedException e) {
@@ -41,14 +47,29 @@ public class AuthenticatorSingleton {
     }
 
     public void register(String firstname, String name, String email, String password, String confirmPassword) {
-        this.registerThread = new Thread(() -> lastRM = new RequestMessage(200, "{\"session_token\": \"1234\"}"));
+        this.registerThread = new Thread(() -> {
+            Request request = new Request("user/register", POST, "token", StartActivity.API_KEY, "email", email, "firstname", firstname, "name", name, "password", password, "password_confirm", confirmPassword);
+            try {
+                request.getRequestThread().join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            lastRM = request.getRequestMessage();
+        });
         this.registerThread.start();
     }
 
     public void logOut(String session_token) {
         this.logOutThread = new Thread(() -> {
+            Request request = new Request("user/logout", POST, "token", StartActivity.API_KEY, "session_token", session_token);
+            try {
+                request.getRequestThread().join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             currentUser = null;
-            lastRM = new RequestMessage(200, "{\"message\": \"success\"}");
+            lastRM = request.getRequestMessage();
         });
         logOutThread.start();
     }
@@ -58,7 +79,29 @@ public class AuthenticatorSingleton {
     }
 
     public void setCurrentUser(String session_token) {
-        this.setCurrentUserThread = new Thread(() -> currentUser = new User(session_token));
+        this.setCurrentUserThread = new Thread(() -> {
+            Request request = new Request("user", POST, "token", StartActivity.API_KEY, "session_token", session_token);
+            try {
+                request.getRequestThread().join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            JSONObject response = request.getRequestMessage().getRequestMessage();
+            try {
+                currentUser = new User(response.getString("firstname"),
+                        response.getString("name"),
+                        response.getString("email"),
+                        response.optString("address"),
+                        response.optString("additional_address"),
+                        response.optString("city"),
+                        response.optInt("postal"),
+                        response.optString("dob"));
+
+                currentUser.setSessionToken(session_token);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        });
         this.setCurrentUserThread.start();
     }
 

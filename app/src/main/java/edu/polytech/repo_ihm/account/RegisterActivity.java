@@ -1,6 +1,5 @@
 package edu.polytech.repo_ihm.account;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.StartActivity;
@@ -47,43 +49,57 @@ public class RegisterActivity extends AppCompatActivity {
 
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Chargement en cours, merci de patienter").setTitle("Inscription").setCancelable(false);
+            builder.setMessage(R.string.loading).setTitle(R.string.registerTitle).setCancelable(false);
             AlertDialog dialog = builder.create();
             dialog.show();
-            @SuppressLint("ApplySharedPref") Thread login = new Thread(() -> {
-                AuthenticatorSingleton.getInstance().register(firstnameInput.getText().toString(), nameInput.getText().toString(), emailInput.getText().toString(), passwordInput.getText().toString(), passwordConfirmInput.getText().toString());
+            runOnUiThread(() -> {
+
                 try {
+                    AuthenticatorSingleton.getInstance().register(firstnameInput.getText().toString(), nameInput.getText().toString(), emailInput.getText().toString(), passwordInput.getText().toString(), passwordConfirmInput.getText().toString());
                     AuthenticatorSingleton.getInstance().registerThread.join();
-                } catch (InterruptedException e) {
+                    JSONObject response = AuthenticatorSingleton.getInstance().lastRM.getRequestMessage();
+                    if (response != null && response.has("session_token")) {
+                        dialog.setMessage(getString(R.string.register_success));
+
+                        AuthenticatorSingleton.getInstance().setCurrentUser((String) response.get("session_token"));
+                        AuthenticatorSingleton.getInstance().setCurrentUserThread.join();
+
+                        SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("session_token", String.valueOf(response.get("session_token")));
+                        editor.apply();
+
+                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                        dialog.cancel();
+                        finish();
+                    } else {
+                        if (passwordInput.getText() != passwordConfirmInput.getText()) {
+                            dialog.setMessage(getString(R.string.register_password));
+                        } else {
+                            dialog.setMessage(getString(R.string.register_mail));
+                        }
+                        final Timer t = new Timer();
+                        t.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                dialog.dismiss();
+                                runOnUiThread(() -> {
+                                    registerButton.setEnabled(true);
+                                    cancelButton.setEnabled(true);
+                                    firstnameInput.setEnabled(true);
+                                    nameInput.setEnabled(true);
+                                    emailInput.setEnabled(true);
+                                    passwordInput.setEnabled(true);
+                                    passwordConfirmInput.setEnabled(true);
+                                });
+                                t.cancel();
+                            }
+                        }, 2000);
+                    }
+                } catch (JSONException | InterruptedException e) {
                     e.printStackTrace();
                 }
-                JSONObject response = AuthenticatorSingleton.getInstance().lastRM.getRequestMessage();
-                if (response.has("session_token")) {
-                    dialog.setMessage("Vous êtes inscrit, redirection vers le menu...");
-                    try {
-                        AuthenticatorSingleton.getInstance().setCurrentUser((String) response.get("session_token"));
-                    } catch (JSONException ignored) {
-                    }
-                    try {
-                        AuthenticatorSingleton.getInstance().setCurrentUserThread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    try {
-                        editor.putString("session_token", String.valueOf(response.get("session_token")));
-                    } catch (JSONException ignored) {
-                    }
-                    editor.commit();
-
-                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                    dialog.cancel();
-                    finish();
-                }
             });
-            login.start();
         });
 
 

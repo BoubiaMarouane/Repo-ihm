@@ -25,10 +25,12 @@ public class RequestMessage {
     }
 
     public JSONObject getRequestMessage() {
-        try {
-            return new JSONObject(requestMessage);
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if (!requestMessage.equals("error")) {
+            try {
+                return new JSONObject(requestMessage);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }

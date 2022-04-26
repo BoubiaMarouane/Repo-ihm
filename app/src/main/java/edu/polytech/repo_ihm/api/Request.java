@@ -1,5 +1,7 @@
 package edu.polytech.repo_ihm.api;
 
+import static edu.polytech.repo_ihm.StartActivity.API_HOST;
+
 import androidx.annotation.NonNull;
 
 import java.io.BufferedInputStream;
@@ -15,7 +17,6 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class Request {
-    public static String API_HOST = "http://d8d8-109-210-108-136.eu.ngrok.io/";
     private final Thread requestThread;
     private RequestMessage requestMessage;
 

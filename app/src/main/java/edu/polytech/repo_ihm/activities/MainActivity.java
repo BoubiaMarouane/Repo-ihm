@@ -1,14 +1,14 @@
 package edu.polytech.repo_ihm.activities;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.AppCompatActivity;
 
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.StartActivity;
@@ -23,14 +23,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(!AuthenticatorSingleton.getInstance().isUserLogged()) {
+        if (!AuthenticatorSingleton.getInstance().isUserLogged()) {
             Intent i = new Intent(MainActivity.this, StartActivity.class);
             startActivity(i);
         }
-
-
-
-
 
         Button logoutButton = findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener((View v) -> {
@@ -59,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
     public void goToMesInventaires(View view) {
         Intent intent = new Intent(MainActivity.this, MyInventoriesActivity.class);
         startActivity(intent);
@@ -81,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, IdeeRecettesActivity.class);
         startActivity(intent);
     }
+
     public void goToAlertePeremption(View view) {
         Intent intent = new Intent(MainActivity.this, AlertePeremptionActivity.class);
         startActivity(intent);

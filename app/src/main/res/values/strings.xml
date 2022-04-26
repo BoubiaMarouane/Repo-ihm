@@ -53,4 +53,10 @@
     <string name="my_inventories">Mes Inventaires</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="register_password">Mots de passe différent, merci de re-essayer…</string>
+    <string name="register_mail">Email deja utilisé, merci de re-essayer…</string>
+    <string name="login_incorrect">Identifiants incorrecte, merci de réessayer...</string>
+    <string name="login_correct">Identifiants correcte, redirection vers le menu...</string>
+    <string name="register_success">Vous êtes inscrit, redirection vers le menu...</string>
+    <string name="loading">Chargement en cours, merci de patienter</string>
 </resources>

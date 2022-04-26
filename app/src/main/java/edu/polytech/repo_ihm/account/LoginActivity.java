@@ -1,6 +1,5 @@
 package edu.polytech.repo_ihm.account;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.StartActivity;
@@ -40,43 +42,51 @@ public class LoginActivity extends AppCompatActivity {
 
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Chargement en cours, merci de patienter").setTitle("Connexion").setCancelable(false);
+            builder.setMessage(R.string.loading).setTitle(R.string.login).setCancelable(false);
             AlertDialog dialog = builder.create();
             dialog.show();
-            @SuppressLint("ApplySharedPref") Thread login = new Thread(() -> {
+            runOnUiThread(() -> {
                 AuthenticatorSingleton.getInstance().logIn(emailInput.getText().toString(), passwordInput.getText().toString());
                 try {
                     AuthenticatorSingleton.getInstance().logInThread.join();
-                } catch (InterruptedException e) {
+                    JSONObject response = AuthenticatorSingleton.getInstance().lastRM.getRequestMessage();
+                    if (response != null && response.has("session_token")) {
+                        dialog.setMessage(getString(R.string.login_correct));
+                        AuthenticatorSingleton.getInstance().setCurrentUser((String) response.get("session_token"));
+                        AuthenticatorSingleton.getInstance().setCurrentUserThread.join();
+
+                        SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("session_token", String.valueOf(response.get("session_token")));
+                        editor.apply();
+
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        dialog.cancel();
+                        finish();
+                    } else {
+                        dialog.setMessage(getString(R.string.login_incorrect));
+                        final Timer t = new Timer();
+
+
+                        t.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                dialog.dismiss();
+                                runOnUiThread(() -> {
+                                    loginButton.setEnabled(true);
+                                    cancelButton.setEnabled(true);
+                                    emailInput.setEnabled(true);
+                                    passwordInput.setEnabled(true);
+                                });
+                                t.cancel();
+                            }
+                        }, 1000);
+                    }
+                } catch (InterruptedException | JSONException e) {
                     e.printStackTrace();
                 }
-                JSONObject response = AuthenticatorSingleton.getInstance().lastRM.getRequestMessage();
-                if (response.has("session_token")) {
-                    dialog.setMessage("Identifiants correcte, redirection vers le menu...");
-                    try {
-                        AuthenticatorSingleton.getInstance().setCurrentUser((String) response.get("session_token"));
-                    } catch (JSONException ignored) {
-                    }
-                    try {
-                        AuthenticatorSingleton.getInstance().setCurrentUserThread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    try {
-                        editor.putString("session_token", String.valueOf(response.get("session_token")));
-                    } catch (JSONException ignored) {
-                    }
-                    editor.commit();
-
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    dialog.cancel();
-                    finish();
-                }
             });
-            login.start();
         });
 
         cancelButton.setOnClickListener((View v) -> actionBack());
