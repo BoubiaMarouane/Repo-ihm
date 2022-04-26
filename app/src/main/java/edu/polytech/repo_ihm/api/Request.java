@@ -24,7 +24,6 @@ public class Request {
     private RequestMessage requestMessage;
 
     public Request(String uri, RequestType type, Object... parameters) {
-        Log.d("DEBUG", "Request Parameters: " + Arrays.toString(parameters));
         if (parameters.length % 2 != 0)
             throw new IllegalArgumentException("Arguments size not valid");
         requestThread = type == RequestType.GET ? getThread(uri) : otherThread(uri, type, parameters);
@@ -59,6 +58,7 @@ public class Request {
                 urlConnection.setRequestProperty("Content-Type", "application/json; utf-8");
                 urlConnection.setDoOutput(true);
                 OutputStream os = urlConnection.getOutputStream();
+                Log.d("a", "otherThread:" + mapToJson(parametersMap));
                 byte[] input = mapToJson(parametersMap).getBytes(StandardCharsets.UTF_8);
                 os.write(input, 0, input.length);
 

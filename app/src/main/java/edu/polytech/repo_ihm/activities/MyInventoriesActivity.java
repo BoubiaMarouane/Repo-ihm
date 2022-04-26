@@ -65,7 +65,7 @@ public class MyInventoriesActivity extends AppCompatActivity {
         });
 
         createInventory.setOnClickListener(view -> runOnUiThread(() -> {
-            Request request = new Request("inventory/create", Request.RequestType.POST, "token", StartActivity.API_KEY, "session_token", AuthenticatorSingleton.getInstance().getCurrentUser().getSessionToken(), "label", label.getText());
+            Request request = new Request("inventory/create", Request.RequestType.POST, "token", StartActivity.API_KEY, "session_token", AuthenticatorSingleton.getInstance().getCurrentUser().getSessionToken(), "label", label.getText().toString());
             try {
                 request.getRequestThread().join();
             } catch (InterruptedException e) {
