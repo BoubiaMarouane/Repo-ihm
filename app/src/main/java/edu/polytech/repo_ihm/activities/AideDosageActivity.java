@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.json.JSONObject;
 
@@ -37,7 +38,7 @@ public class AideDosageActivity extends AppCompatActivity {
     private EditText nbPersonnes;
     private IngredientsAdapter.IngredientsClickListener listener;
 
-    private final int BASE_CAL = 2400; // base calories per person per meal per day
+    private final int BASE_CAL = 800; // base calories per person per meal per day
     private int nbOfIngredients = 0;
 
 
@@ -63,6 +64,7 @@ public class AideDosageActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 ingredientsView.setVisibility(View.VISIBLE);
                 show_quantity_button.setVisibility(View.VISIBLE);
+                ((TextView) findViewById(R.id.textView12)).setText("Nombre de personnes :");
             }
 
             @Override
@@ -124,7 +126,9 @@ public class AideDosageActivity extends AppCompatActivity {
     }
 
     private String calculateQuantity(int ingredientID) throws Exception {
-        JSONObject quantity = Requester.getIngredientQuantity(ingredientID,BASE_CAL);
+        int nb = Integer.parseInt(nbPersonnes.getText().toString());
+        int totalCal = BASE_CAL * nb;
+        JSONObject quantity = Requester.getIngredientQuantity(ingredientID,totalCal);
         String response = Double.toString(quantity.getDouble("amount")) + quantity.getString("unit");
         return response;
     }
