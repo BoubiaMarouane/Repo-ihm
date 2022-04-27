@@ -18,8 +18,6 @@ import edu.polytech.repo_ihm.gps.MapsActivity;
 public class MarketPlaceActivity extends FragmentActivity {
 
     private Button buttonSellProduct;
-    private Button buttonBuyProduct;
-    private Intent intentToBuyProduct;
     private Intent intentToSellProduct;
 
     @Override
@@ -34,12 +32,6 @@ public class MarketPlaceActivity extends FragmentActivity {
                 intentToSellProduct=new Intent(MarketPlaceActivity.this , VendreProd.class);
                 startActivity(intentToSellProduct);
             }
-        });
-
-        buttonBuyProduct = findViewById(R.id.btnAcheterDespro);
-        buttonBuyProduct.setOnClickListener(v -> {
-            intentToBuyProduct = new Intent(MarketPlaceActivity.this , BuyProductActivity.class);
-            startActivity(intentToBuyProduct);
         });
 
     }

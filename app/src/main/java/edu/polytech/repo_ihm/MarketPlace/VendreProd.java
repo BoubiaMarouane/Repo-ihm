@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +19,7 @@ import edu.polytech.repo_ihm.activities.ideeRecettes.Ingredient;
 import edu.polytech.repo_ihm.activities.ideeRecettes.IngredientAdapter;
 import edu.polytech.repo_ihm.datas.Ingredients;
 import edu.polytech.repo_ihm.datas.IngredientsAdapter;
+import edu.polytech.repo_ihm.gps.MapsActivity;
 
 public class VendreProd extends AppCompatActivity {
 
@@ -25,7 +27,9 @@ public class VendreProd extends AppCompatActivity {
     RecyclerView recyclerView;
 
     private IngredientsAdapter.IngredientsClickListener listener;
-
+    public String productName;
+    private Button buttonToSellProduct;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +39,28 @@ public class VendreProd extends AppCompatActivity {
         setProductsToSell();
         setAdapter();
 
+        buttonToSellProduct = findViewById(R.id.buttonToSellProd);
+        buttonToSellProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent=new Intent(VendreProd.this , MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
+    private void setOnClickListener() {
+        listener = new IngredientsAdapter.IngredientsClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                productName = productsToSell.get(position).french();
+            }
+        };
+    }
+
     private void setAdapter() {
+        setOnClickListener();
         IngredientsAdapter adapter = new IngredientsAdapter(productsToSell, listener);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());

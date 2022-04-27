@@ -42,6 +42,7 @@ import java.util.List;
 import java.util.Locale;
 
 import edu.polytech.repo_ihm.MarketPlace.BuyProductActivity;
+import edu.polytech.repo_ihm.MarketPlace.VendreProd;
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.activities.MarketPlaceActivity;
 
@@ -62,6 +63,7 @@ public class MapsActivity extends AppCompatActivity implements LocationListener 
 
     private Button buttonBack;
     private Intent intent;
+    private VendreProd product;
 
 
     @SuppressLint("WrongThread")
@@ -193,6 +195,8 @@ public class MapsActivity extends AppCompatActivity implements LocationListener 
             googleMap.setOnMarkerClickListener(this);
             if (sumbitText == false && first == true) {
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(googleLocation, 15));
+                // target with name of product
+                googleMap.addMarker(new MarkerOptions().position(googleLocation).title("Product Name"));
             }
             first = false;
 

@@ -10,12 +10,12 @@
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Acheter des produits"
-        android:textSize="20dp"
         android:textAlignment="center"
+        android:textSize="20dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
 
+        android:layout_marginTop="12dp"
         android:onClick="returnHomePage"
         android:text="retour"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,14 +38,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:onClick="goToMap"
         android:text="Autour de moi"
         app:layout_constraintBottom_toTopOf="@+id/map"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
-        app:layout_constraintStart_toEndOf="@+id/backButton"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toEndOf="@+id/backButton" />
 
     <fragment
         android:id="@+id/map"
@@ -52,21 +52,24 @@
         android:layout_width="400dp"
         android:layout_height="250dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backButton"
         tools:context=".gps.MapsActivity"></fragment>
 
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="228dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Séléctionner votre produit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/map" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/footer"
+        android:name="edu.polytech.repo_ihm.fragments.AppFooterFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout="@layout/fragment_app_footer"
+        tools:layout_editor_absoluteX="0dp">
+
+    </androidx.fragment.app.FragmentContainerView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

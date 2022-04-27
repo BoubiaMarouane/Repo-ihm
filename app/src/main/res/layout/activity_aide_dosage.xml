@@ -96,14 +96,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/footer"
-            android:name="edu.polytech.repo_ihm.fragments.AppFooterFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_app_footer">
-
-        </androidx.fragment.app.FragmentContainerView>
     </LinearLayout>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/footer"
+        android:name="edu.polytech.repo_ihm.fragments.AppFooterFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout="@layout/fragment_app_footer"
+        tools:layout_editor_absoluteX="0dp">
+
+    </androidx.fragment.app.FragmentContainerView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
