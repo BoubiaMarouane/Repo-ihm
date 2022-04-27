@@ -6,172 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".MarketPlace.VendreProd">
 
-    <LinearLayout android:gravity="center_horizontal"
-        android:id="@+id/linearAndroidLarge"
-        android:layout_height="match_parent"
+    <TextView
+        android:id="@+id/editTextTextPersonName2"
         android:layout_width="match_parent"
-        android:orientation="vertical" >
-        <LinearLayout android:gravity="start"
-            android:id="@+id/linearGroup53"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent" android:orientation="vertical">
-            <TextView android:ellipsize="end"
-                android:gravity="center_horizontal"
-                android:id="@+id/txtVENDErVOSPROD"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_width="match_parent"
-                android:singleLine="true"
-                android:text="Vendez Vos Produits"
-                android:textAllCaps="true"
-                />
-            <LinearLayout android:gravity="start"
-                android:id="@+id/linearBack"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_width="match_parent" android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:text="Vendre des produits"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-            </LinearLayout>
-            <TextView android:gravity="center_horizontal"
-                android:id="@+id/txtSlctionnezLe"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:text="Séléctionner le produit"
-                />
-            <LinearLayout android:id="@+id/linearFrame21"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:orientation="horizontal">
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
 
+        android:layout_marginTop="28dp"
+        android:onClick="returnHomePage"
+        android:text="retour"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
-            </LinearLayout>
-            <View
-                android:background="@color/grey"
-                android:id="@+id/lineLine1"
-                android:layout_gravity="center_horizontal"
-                android:layout_height="1dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_width="328dp"/>
-            <TextView android:gravity="center_horizontal"
-                android:id="@+id/txtQuantitDuPro"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_width="match_parent"
-                android:text="Quantité du produit : "
-                />
-            <FrameLayout android:id="@+id/frameGroup57"
-                android:layout_gravity="center_horizontal"
-                android:layout_height="44dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_width="328dp">
-                <EditText android:ellipsize="end"
-                    android:id="@+id/etGroup1"
-                    android:layout_gravity="start"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:paddingBottom="27dp"
-                    android:paddingEnd="30dp"
-                    android:paddingStart="30dp"
-                    android:paddingTop="30dp"
-                    android:singleLine="true"
-                    android:text="@={androidLarge14VM.androidLarge14Model.etGroup1Value}"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/products_to_sell"
+        android:layout_width="419dp"
+        android:layout_height="246dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="140dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
-                <LinearLayout
-                    android:id="@+id/linearGroup58"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|end"
-                    android:layout_marginStart="149dp"
-                    android:layout_marginEnd="149dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="vertical">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="326dp"
+        android:layout_height="34dp"
+        android:text="Séléctionner le produit à vendre"
+        android:textAlignment="center"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/products_to_sell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867"
+        tools:ignore="MissingConstraints" />
 
-                </LinearLayout>
-            </FrameLayout>
-            <FrameLayout android:id="@+id/frameGroup60"
-                android:layout_gravity="end"
-                android:layout_height="29dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="41dp"
-                android:layout_marginTop="24dp" android:layout_width="303dp">
-                <TextView android:ellipsize="end"
-                    android:id="@+id/txtPrix0SiDon"
-                    android:layout_gravity="start"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:singleLine="true"
-                    android:text="Prix (0e si don) :"
-                    />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="136dp"
+        android:text="Vendre"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
-                <LinearLayout
-                    android:id="@+id/linearGroup45"
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="25dp"
-                    android:layout_marginBottom="2dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/linearGroup61"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.29"
-                        android:gravity="start"
-                        android:orientation="vertical">
-                    </LinearLayout>
-                </LinearLayout>
-            </FrameLayout>
-            <View android:background="@color/gray_200"
-                android:id="@+id/lineLine3"
-                android:layout_gravity="center_horizontal"
-                android:layout_height="1dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp" android:layout_width="328dp"/>
-            <androidx.appcompat.widget.AppCompatButton
-                android:ellipsize="end" android:gravity="center"
-                android:id="@+id/btnConfirmezLaVe"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_width="match_parent"
-                android:singleLine="true"
-                android:text="Confirmez la vente"
-                android:textAllCaps="false"
-                />
-            <LinearLayout android:gravity="start"
-                android:id="@+id/linearFooter"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_width="match_parent"
-                android:orientation="horizontal">
-
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
