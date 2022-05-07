@@ -10,14 +10,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.StartActivity;
 import edu.polytech.repo_ihm.api.Request;
+import edu.polytech.repo_ihm.mock.MockData;
 
 public abstract class InventoryFactory implements Serializable {
     private final int id;
     private String name;
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<>(MockData.products);
 
     public InventoryFactory(int id, String name) {
         this.id = id;

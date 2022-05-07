@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -110,6 +109,8 @@ class InventoryListAdapter extends BaseAdapter {
 
         });
 
+
+        //Change activity
         view.setOnClickListener(view1 -> {
             Intent intent = new Intent(context, SelectedInventory.class);
             intent.putExtra("IV_ID", inventory.getId());

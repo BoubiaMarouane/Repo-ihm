@@ -1,8 +1,5 @@
 package edu.polytech.repo_ihm.account;
 
-import java.time.LocalDate;
-import java.util.Date;
-
 public class User {
     String firstname;
     String name;
@@ -32,4 +29,10 @@ public class User {
     public String getSessionToken() {
         return session_token;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+
 }

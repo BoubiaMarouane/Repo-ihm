@@ -23,7 +23,6 @@ import edu.polytech.repo_ihm.account.AuthenticatorSingleton;
 import edu.polytech.repo_ihm.api.Request;
 import edu.polytech.repo_ihm.datas.InventoriesSingleton;
 import edu.polytech.repo_ihm.datas.Inventory;
-import edu.polytech.repo_ihm.mock.MockData;
 
 public class MyInventoriesActivity extends AppCompatActivity {
     Button bCancelModif;
@@ -36,15 +35,12 @@ public class MyInventoriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_inventories);
 
         EditText label = findViewById(R.id.et_iv_name);
-
         Button createInventory = findViewById(R.id.createInventory);
-
 
         bCancelModif = findViewById(R.id.b_cancel_modif);
         // For retreiving the inventory to modify on the IvListFragment
         ItemViewModel viewModel = new ViewModelProvider(this).get(ItemViewModel.class);
         viewModel.getSelectedItem().observe(this, iv -> {
-
             this.selectedIv = (Inventory) iv;
             ((TextView) findViewById(R.id.tv_envie_iv)).setText(String.format("Modification de %s", iv.getName()));
             bCancelModif.setVisibility(View.VISIBLE);
@@ -103,13 +99,14 @@ public class MyInventoriesActivity extends AppCompatActivity {
             return;
         }
         //On initialise la liste avec au moins le mail de l'user courant
-        List<String> mails = new ArrayList<>(MockData.mails);
+        List<String> mails = new ArrayList<>();
+        mails.add(AuthenticatorSingleton.getInstance().getCurrentUser().getEmail());
         if (isShared) {
             String[] tabIvMails = ((EditText) findViewById(R.id.et_mail_input)).getText().toString().split(";");
             mails = Arrays.stream(tabIvMails).collect(Collectors.toList());
         }
         Inventory iv = new Inventory(InventoriesSingleton.getInstance().getMaxId() + 1, ivName);
-        //On check si une date de suppression auto optionnelle à été rentré
+        //On check si une date de suppression auto optionnelle a été rentré
         String ivDate = ((EditText) findViewById(R.id.et_editTextDate)).getText().toString();
         if (!ivDate.equals("")) {
             iv.setEndDate(ivDate);
@@ -120,6 +117,20 @@ public class MyInventoriesActivity extends AppCompatActivity {
             this.selectedIv.setName(ivName);
             this.selectedIv.setSharedMails(mails);
             this.selectedIv.setEndDate(ivDate);
+
+            //ToDo modif dans l'API aussi avec PUT /!\ vérifiez et compléter le code ci-dessous  /!\
+            Request request = new Request("inventory/update", Request.RequestType.PUT,
+                    "token", StartActivity.API_KEY, "session_token",
+                    AuthenticatorSingleton.getInstance().getCurrentUser().getSessionToken(), "password", "test");
+            try {
+                request.getRequestThread().join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (request.getRequestMessage().getRequestCode() == 200) {
+
+            }
+
         } else {
             //On ajoute le nouvel inventaire
             InventoriesSingleton.getInstance().add(iv);

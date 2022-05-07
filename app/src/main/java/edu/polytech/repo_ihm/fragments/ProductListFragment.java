@@ -4,7 +4,6 @@ package edu.polytech.repo_ihm.fragments;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,25 +51,13 @@ public class ProductListFragment extends Fragment implements AdapterView.OnItemC
         }
 
 
-       /* pName = getActivity().findViewById(R.id.et_name_product);
-        pQty = getActivity().findViewById(R.id.et_product_qty);
-        pDate = getActivity().findViewById(R.id.et_product_date);
-        bSubmit = getActivity().findViewById(R.id.b_submit);*/
-
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_product_list, container, false);
-
-       /* pName = v.findViewById(R.id.et_name_product);
-        pQty = v.findViewById(R.id.et_product_qty);
-        pDate = v.findViewById(R.id.et_product_date);
-        bSubmit = v.findViewById(R.id.b_submit);*/
         ListView lv = v.findViewById(R.id.lv_product_list);
         if(currentInventory != null) {
             ProductListAdapter pAdapter = new ProductListAdapter(getActivity(), currentInventory.getProducts());
