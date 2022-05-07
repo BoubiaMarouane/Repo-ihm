@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import edu.polytech.repo_ihm.R;
+import edu.polytech.repo_ihm.activities.ContactActivity;
 import edu.polytech.repo_ihm.activities.MainActivity;
 
 /**
@@ -38,7 +39,8 @@ public class AppFooterFragment extends Fragment {
 
         //Contact ToDo
         rootView.findViewById(R.id.contactButton).setOnClickListener((View v) -> {
-
+            Intent i = new Intent(getActivity(), ContactActivity.class);
+            startActivity(i);
         });
 
         //Polytech
@@ -49,7 +51,8 @@ public class AppFooterFragment extends Fragment {
 
         //A Propos ToDo
         rootView.findViewById(R.id.aboutButton).setOnClickListener((View v) -> {
-
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://lms.univ-cotedazur.fr/mod/page/view.php?id=39235"));
+            startActivity(i);
         });
 
         return rootView;

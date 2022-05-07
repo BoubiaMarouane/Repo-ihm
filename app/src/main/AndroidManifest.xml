@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Repoihm.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.ContactActivity"
+            android:exported="false" />
+        <activity
             android:name=".MarketPlace.BuyProductActivity"
             android:exported="false" />
         <activity

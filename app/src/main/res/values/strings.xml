@@ -69,4 +69,6 @@
     <string name="expiry">Valide jusqu\'au</string>
     <string name="create_inventory">Créer l\'inventaire</string>
     <string name="add">Ajouter</string>
+    <string name="contact_msg">Des remarques, avis, suggestions ?\nN\'hésitez pas à nous contacter via l\'adresse ci-dessous.\nNotre équipe se fera un plaisir de vous répondre dans les plus brefs délais !</string>
+    <string name="support_mail">support@dontWasteIt.com</string>
 </resources>
