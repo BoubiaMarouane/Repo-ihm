@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import edu.polytech.repo_ihm.R;
 import edu.polytech.repo_ihm.api.Requester;
@@ -126,10 +127,14 @@ public class AideDosageActivity extends AppCompatActivity {
     }
 
     private String calculateQuantity(int ingredientID) throws Exception {
+        double coef = ingredients.stream()
+                .filter(ingredient -> ingredient.id() == ingredientID)
+                .collect(Collectors.toList())
+                .get(0).coef();
         int nb = Integer.parseInt(nbPersonnes.getText().toString());
         int totalCal = BASE_CAL * nb;
         JSONObject quantity = Requester.getIngredientQuantity(ingredientID,totalCal);
-        String response = Double.toString(quantity.getDouble("amount")) + quantity.getString("unit");
+        String response = Double.toString(quantity.getDouble("amount") * coef) + quantity.getString("unit");
         return response;
     }
 
