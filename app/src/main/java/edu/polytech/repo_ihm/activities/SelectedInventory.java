@@ -16,14 +16,15 @@ import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
 import edu.polytech.repo_ihm.R;
+import edu.polytech.repo_ihm.StartActivity;
+import edu.polytech.repo_ihm.account.AuthenticatorSingleton;
+import edu.polytech.repo_ihm.api.Request;
 import edu.polytech.repo_ihm.datas.InventoriesSingleton;
 import edu.polytech.repo_ihm.datas.InventoryFactory;
 import edu.polytech.repo_ihm.datas.Product;
 import edu.polytech.repo_ihm.fragments.ProductListFragment;
 
 public class SelectedInventory extends AppCompatActivity {
-
-    private int inventoryId;
 
     // Barcode scanner part //
     private final String SEPARATOR = "&";
@@ -32,10 +33,10 @@ public class SelectedInventory extends AppCompatActivity {
     private final int PRODUCT_QTY = 2;
     private final ActivityResultLauncher<ScanOptions> barcodeLauncher = registerForActivityResult(new ScanContract(),
             result -> {
-                if(result.getContents() == null) {
+                if (result.getContents() == null) {
                     Toast.makeText(this, "Erreur, Interruption du scan", Toast.LENGTH_LONG).show();
                 } else {
-                    String res =  result.getContents();
+                    String res = result.getContents();
                     String pName = res.split(SEPARATOR)[PRODUCT_NAME];
                     String pDate = res.split(SEPARATOR)[PRODUCT_DATE_EXP];
                     String pQty = res.split(SEPARATOR)[PRODUCT_QTY];
@@ -46,16 +47,42 @@ public class SelectedInventory extends AppCompatActivity {
 
                 }
             });
+    private int inventoryId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_inventory);
         inventoryId = getIntent().getIntExtra("IV_ID", 0);
+        getIv(inventoryId).setProducts();
         generateFragListProducts();
         TextView title = findViewById(R.id.title);
         title.setText(getIv(inventoryId).getName());
 
+        //findViewById(R.id.b_scan).setOnClickListener(v -> scanProduct()); marche pas bien
+
+        EditText label = findViewById(R.id.et_name_product);
+        EditText expiry = findViewById(R.id.et_product_date);
+        EditText quantity = findViewById(R.id.et_product_qty);
+
+        findViewById(R.id.b_submit).setOnClickListener(view -> runOnUiThread(() -> {
+            Request request = new Request("inventory/product/create", Request.RequestType.POST,
+                    "token", StartActivity.API_KEY,
+                    "session_token", AuthenticatorSingleton.getInstance().getCurrentUser().getSessionToken(),
+                    "inventory_id", inventoryId,
+                    "label", label.getText().toString(),
+                    "expiry", expiry.getText().toString(),
+                    "quantity", quantity.getText().toString()
+            );
+            try {
+                request.getRequestThread().join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (request.getRequestMessage().getRequestCode() == 200) {
+                generateFragListProducts();
+            }
+        }));
 
     }
 
@@ -86,7 +113,6 @@ public class SelectedInventory extends AppCompatActivity {
     }
 
 
-
     public void back(View view) {
         Intent intent = new Intent(SelectedInventory.this, MyInventoriesActivity.class);
         startActivity(intent);
@@ -103,8 +129,3 @@ public class SelectedInventory extends AppCompatActivity {
         barcodeLauncher.launch(options);
     }
 }
-
-
-
-
-

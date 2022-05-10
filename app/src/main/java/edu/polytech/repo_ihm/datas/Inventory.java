@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Inventory extends InventoryFactory {
 
@@ -38,11 +39,7 @@ public class Inventory extends InventoryFactory {
     }
 
     public String getMailsSeparated(){
-        String s = "";
-        for(String ss : sharedMails){
-            s += ss + ";";
-        }
-        return s.substring(0,s.length());
+        return sharedMails.stream().map(ss -> ss + ";").collect(Collectors.joining());
     }
 
     public String getEndDate() {

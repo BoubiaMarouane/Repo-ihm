@@ -12,17 +12,23 @@ import java.util.List;
 
 import edu.polytech.repo_ihm.StartActivity;
 import edu.polytech.repo_ihm.api.Request;
-import edu.polytech.repo_ihm.mock.MockData;
 
 public abstract class InventoryFactory implements Serializable {
     private final int id;
     private String name;
-    private List<Product> products = new ArrayList<>(MockData.products);
+    private final List<Product> products = new ArrayList<>();
 
     public InventoryFactory(int id, String name) {
         this.id = id;
         this.name = name;
 
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts() {
         Request request = new Request("inventory/product", Request.RequestType.POST, "token", StartActivity.API_KEY, "inventory_id", id);
         try {
             request.getRequestThread().join();
@@ -38,18 +44,6 @@ public abstract class InventoryFactory implements Serializable {
         } catch (InterruptedException | JSONException e) {
             e.printStackTrace();
         }
-
-
-
-        addProduct(new Product("iui", 5, "5"));
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
     }
 
     public int getId() {

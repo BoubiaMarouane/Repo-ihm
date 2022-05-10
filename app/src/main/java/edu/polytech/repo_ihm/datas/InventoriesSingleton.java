@@ -43,6 +43,7 @@ public class InventoriesSingleton extends ArrayList<InventoryFactory> {
 
     public List<InventoryFactory> getInventories() {
         reload();
+
         return this;
     }
 
